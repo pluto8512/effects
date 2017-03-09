@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scrollTop动画</title>
+</head>
+<style>
+    section {
+        width: 100%;
+        height: 1000px;
+    }
+    section:nth-child(1){
+        background: red;
+    }
+    section:nth-child(2){
+        background: grey;
+    }
+    section:nth-child(3){
+        background: green;
+    }
+</style>
+<body>
+    <section></section>
+    <section></section>
+    <section></section>
+</body>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script>
+// 实现动画，滚动条会滚当到相应的位置，并且有过渡动画，执行完以后执行回调函数
+// zepto不支持scrollTop动画，需要自己写
+    var body = $("html, body");
+    body.on('click',function(){
+        body.animate({scrollTop:$('section:nth-child(2)').height()+'px'}, '500', 'swing', function() { 
+        console.log("Finished animating");
+        });
+    });
+</script>
+</html>

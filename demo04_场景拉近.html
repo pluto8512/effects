@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo4_场景拉近</title>
+     <script type="text/javascript" >
+        var html = document.documentElement;
+        var windowWidth = html.clientWidth;
+        html.style.fontSize = windowWidth / 6.4+'px';
+        console.log(windowWidth);
+        console.log( html.style.fontSize);
+    </script>
+</head>
+<style>
+    html,body {
+        width: 100%;
+        height: 100%;
+        /*消除100%之外的像素*/
+        margin: 0;
+        padding: 0;
+    }
+    section {
+        width: 100%;
+        height: 100%;
+        /*当里面的内容放大的时候，将超出屏幕的内容隐藏掉，以免撑大页面出现滚动条*/
+        overflow: hidden;
+    }
+    .imgbg {
+        width: 100%;
+        height: 100%;
+        background: red url("./images/bg1.jpg") no-repeat; 
+        background-size: 100% 100%;
+        -webkit-animation: spiritAnim 1.5s linear both;
+        animation: spiritAnim 1.5s linear  both;
+    }
+    @-webkit-keyframes  spiritAnim{
+        0% {
+            transform: scale(1) translate(0,0);
+        }
+        100% { 
+            transform: scale(2) translate(-0.4rem,-0.3rem);
+        }
+    }
+</style>
+<body>
+    <section>
+        <div class="imgbg"></div>
+    </section>
+</body>
+</html>

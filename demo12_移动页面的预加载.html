@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>移动页面的预加载</title>
+    <style>
+        html，body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        section {
+            background: deepskyblue;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .precent {
+            width: 100%;
+            height: 1rem;
+            background: greenyellow;
+            font: normal normal 16px/16px "微软雅黑";
+        }
+        
+        .progress {
+            width: 0%;
+            height: 1rem;
+            background: rosybrown;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="precent"></div>
+        <div class="progress"></div>
+    </section>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./js/demo12_移动页面的预加载.js"></script>
+</body>
+
+</html>

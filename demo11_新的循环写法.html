@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js新的循环写法</title>
+</head>
+
+<body>
+    <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js" type="text/javascript"></script>
+    <script>
+        // 这种写法有问题
+        var loaded = 0;
+        var total = 22;
+        callback = function(percent) {
+            console.log(percent);
+        };
+        _on = function() {
+            loaded < total && (++loaded, callback && callback(loaded / total));
+        };
+        _on();
+    </script>
+</body>
+
+</html>

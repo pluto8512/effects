@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>创维冰箱</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <link rel="stylesheet" type="text/css" href="<%=resourceDomain%>/icebox/css/index.css?=<%=version%>" />
+    <script type="text/javascript">
+        var html = document.documentElement;
+        var windowWidth = html.clientWidth;
+        html.style.fontSize = windowWidth / 6.4 + 'px';
+        var urlPath = '<%=resourceDomain%>';
+    </script>
+</head>
+
+<body>
+    <section id="loadeing"></section>
+
+    <section class="page01">
+        <div class="imgbig">
+            <div class="touT"></div>
+        </div>
+    </section>
+
+    <section class="page02">
+        <div class="cover02">
+            <div class="btnLook">去看看</div>
+        </div>
+        <div class="dialogue plot01">
+            <div class="enterr">不安的水果们，</div>
+        </div>
+        <div class="dialogue plot02">
+            <div class="enterr">在密谋些什么呢？</div>
+        </div>
+    </section>
+
+    <section class="page03">
+        <div class="head"></div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div id="dialogue">
+            <div class="entering" data-type="0"></div>
+            <div class="touT"></div>
+        </div>
+    </section>
+
+    <section class="page04 pageAnim">
+        <div class="touT"></div>
+        <%--<div class="insidePages">--%>
+            <%--<div class="diaArea">--%>
+                <%--<ul>--%>
+                    <%--<li></li>--%>
+                        <%--<li></li>--%>
+                            <%--<li></li>--%>
+                                <%--<li></li>--%>
+                                    <%--<li></li>--%>
+                                        <%--<li></li>--%>
+                                            <%--<li></li>--%>
+                                                <%--<li></li>--%>
+                                                    <%--<li></li>--%>
+                                                        <%--</ul>--%>
+                                                            <%--</div>--%>
+                                                                <%--</div>--%>
+    </section>
+
+    <section class="page05">
+        <div class="icebox"></div>
+        <div class="icebox2"></div>
+        <div class="iceCover"></div>
+        <!--风 opacity-->
+        <div class="wind"></div>
+        <!--风扇-->
+        <div class="rotary"></div>
+        <!--吹风的按钮-->
+        <div class="blowTouch"></div>
+
+        <div class="fruit fruit01"></div>
+        <div class="fruit fruit02"></div>
+        <div class="fruit fruit03"></div>
+        <div class="fruit fruit04"></div>
+
+        <ul class="fruitBasket">
+            <li class="flyFruit flyFruit01 fly01"><span></span></li>
+            <li class="flyFruit flyFruit02 fly01"><span></span></li>
+            <li class="flyFruit flyFruit03 fly01"><span></span></li>
+            <li class="flyFruit flyFruit04 fly02"><span></span></li>
+            <li class="flyFruit flyFruit05 fly02"><span></span></li>
+            <li class="flyFruit flyFruit06 fly02"><span></span></li>
+            <li class="flyFruit flyFruit07 fly02"><span></span></li>
+            <li class="flyFruit flyFruit08 fly02"><span></span></li>
+            <li class="flyFruit flyFruit09 fly02"><span></span></li>
+            <li class="flyFruit flyFruit10 fly03"><span></span></li>
+            <li class="flyFruit flyFruit11 fly03"><span></span></li>
+        </ul>
+
+        <div class="cover03">
+            <div class="btnLook">去看看</div>
+            <div class="dialogue plot01">
+                <div class="enterr">因为你的帮助，</div>
+            </div>
+            <div class="dialogue plot02">
+                <div class="enterr">水果们搬了新家。</div>
+            </div>
+            <div class="dialogue plot03">
+                <div class="enterr">现在他们怎么样了呢？</div>
+            </div>
+        </div>
+
+        <div class="fontTip">
+            <p>按住上方按钮，对屏幕吹气</p>
+            <p>帮水果们搬新家吧！</p>
+        </div>
+
+    </section>
+
+    <section class="page06 pageAnim">
+        <%--<div class="fridImg"></div>--%>
+            <div class="touT"></div>
+    </section>
+
+    <section class="page07">
+        <div class="btnShow"></div>
+        <div class="btnUrl"></div>
+        <div class="cover"></div>
+        <div class="attention">
+            <p class="attFont">长按二维码，关注创维白电微信公众号</p>
+            <img src="<%=resourceDomain%>/icebox/image/ewm.jpg" alt="">
+            <div class="bgCover"></div>
+        </div>
+    </section>
+
+    <div class="musicBox">
+        <span class="bgmPlay"></span>
+        <span class="bgmPause"></span>
+    </div>
+
+    <audio src="<%=resourceDomain%>/icebox/media/tip.mp3"></audio>
+    <!--风的声音-->
+    <audio src="<%=resourceDomain%>/icebox/media/buliao.mp3" id="fengAudio"></audio>
+    <audio src="<%=resourceDomain%>/icebox/media/bgm.mp3" id="bgm"></audio>
+</body>
+<script type="text/javascript" src="<%=resourceDomain%>/iag_plugin/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="<%=resourceDomain%>/iag_plugin/fastclick.js"></script>
+<script type="text/javascript" src="<%=resourceDomain%>/iag_plugin/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="<%=resourceDomain%>/iag_plugin/share.js"></script>
+<script type="text/javascript" src="<%=resourceDomain%>/icebox/js/loading.js?=<%=version%>"></script>
+<script type="text/javascript" src="<%=resourceDomain%>/icebox/js/index.js?=<%=version%>"></script>
+<%@include file="footer.jsp" %>
+
+</html>
