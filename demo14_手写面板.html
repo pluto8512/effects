@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        input {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .canvas-wrap {
+            height: 80%;
+            width: 100%;
+            background: deeppink;
+        }
+        
+        #drawCanvas {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .show {
+            height: 20%;
+            width: 100%;
+        }
+        
+        .signature {
+            height: 50%;
+            width: 100%;
+            background: deepskyblue;
+        }
+        
+        .biuld_btn {
+            height: 50%;
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        var html = document.documentElement;
+        var windowWidth = html.clientWidth;
+        html.style.fontSize = windowWidth / 6.4 + 'px';
+    </script>
+</head>
+
+<body>
+    <div class="canvas-wrap">
+        <canvas id="drawCanvas"></canvas>
+    </div>
+    <div class="show">
+        <!---->
+        <img class="signature" src=""></img>
+        <input class="biuld_btn" type="button" name="biuld" value="BIULD">
+    </div>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./js/demo14_手写面板.js"></script>
+</body>
+
+</html>

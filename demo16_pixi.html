@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo_pixi_canvas游戏引擎</title>
+</head>
+
+<body>
+    <script src="./node_modules/pixi.js/dist/pixi.js"></script>
+    <script>
+        // 建立繪圖的兩大元件，並將元件連結至網頁中
+        // 舞台(stage),所有的组件必须链接在舞台中才能被展现
+        // 画布(renderer),选用canvas或webGL进行渲染的一个区域
+        // 后面的两个参数是画布的长和宽
+        var stage = new PIXI.Container();
+        var renderer = new PIXI.WebGLRenderer(900, 400);
+
+        document.body.appendChild(renderer.view); // 連結至網頁
+        // 保留少數如平移、旋轉等圖形的動畫，讓執行速度大大的改善
+        container = new PIXI.ParticleContainer();
+        stage.addChild(container);
+
+        // 使用 PIXI.Graphics 物件幫我們畫矩形
+        var graphics = new PIXI.Graphics();
+        stage.addChild(graphics); // 要將 Graphics 物件加到 Stage 中
+        graphics.beginFill(0xff0000); // 設定我們要畫的顏色
+
+        // 材质(texture)
+        // 可以理解成一种承载图片的结构，它本身不能直接用于显示，需要通过精灵(sprite)才能显示，有点类似于dom中的临时碎片（DocumentFragment）
+        var texture = PIXI.Texture.fromImage("bunny.png");
+        var sprite = new PIXI.Sprite(texture); //由材质创建
+
+        // graphics.drawRect(100, 100, 700, 200);
+        // 畫一萬個矩形
+        // for (var i = 0; i < 10000; i++) {
+        //     graphics.drawRect(Math.random() * 900, Math.random() * 400, 3, 3); // 隨機決定位置
+        // }
+        // 画一万个圆
+        for (var i = 0; i < 10000; i++) {
+            graphics.drawCircle(Math.random() * 900, Math.random() * 900, 3); // 隨機決定位置
+        }
+
+        // 最後利用 renderer 把 stage 畫出來
+        renderer.render(stage);
+    </script>
+</body>
+
+</html>

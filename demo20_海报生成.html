@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>海报生成</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 生成海报
+         * @param callback
+         */
+        function generatePoster(callback) {
+            var canvas = document.createElement('canvas');
+            canvas.width = $frame[0].offsetWidth;
+            canvas.height = $frame[0].offsetHeight + 6;
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = "#E83436"; //绘制背景色
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+            var bg = new Image();
+            bg.src = imgBase64["temp" + slideIndex][0];
+            bg.onload = function() {
+                if (slideIndex == 2) {
+                    poster.drawImage(ctx, $head, poster.intersect($frame, $head));
+                }
+                poster.drawImage(ctx, bg, poster.intersect($frame, $bg));
+                var wordFrame = new Image();
+                wordFrame.src = imgBase64["temp" + slideIndex][1];
+                wordFrame.onload = function() {
+                    poster.drawImage(ctx, wordFrame, poster.intersect($frame, $wordFrame));
+                    poster.drawImage(ctx, $word, poster.intersect($frame, $word));
+                    poster.drawImage(ctx, $signature, poster.intersect($frame, $signature));
+                    var base64 = canvas.toDataURL('image/jpeg', 0.7);
+                    $compose[0].onload = function() {
+                        callback && callback();
+                    };
+                    $compose[0].src = base64;
+                };
+            };
+        }
+    </script>
+</body>
+
+</html>

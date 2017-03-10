@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>three旋转的正方体</title>
+    <style type="text/css">
+        div#canvas-frame {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 600px;
+            background-color: #EEEEEE;
+        }
+    </style>
+</head>
+
+<body onload="threeStart();">
+    <div id="canvas-frame"></div>
+    <script src="./node_modules/three/build/three.js"></script>
+    <script>
+        var renderer;
+
+        function initThree() {
+            width = document.getElementById('canvas-frame').clientWidth;
+            height = document.getElementById('canvas-frame').clientHeight;
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+            renderer.setSize(width, height);
+            document.getElementById('canvas-frame').appendChild(renderer.domElement);
+            renderer.setClearColor(0xFFFFFF, 1.0);
+        }
+
+        var camera;
+
+        function initCamera() {
+            camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+            camera.position.x = 0;
+            camera.position.y = 1000;
+            camera.position.z = 0;
+            camera.up.x = 0;
+            camera.up.y = 0;
+            camera.up.z = 1;
+            camera.lookAt({
+                x: 0,
+                y: 0,
+                z: 0
+            });
+        }
+
+        var scene;
+
+        function initScene() {
+            scene = new THREE.Scene();
+        }
+
+        var light;
+
+        function initLight() {
+            light = new THREE.DirectionalLight(0xFF0000, 1.0, 0);
+            light.position.set(100, 100, 200);
+            scene.add(light);
+        }
+
+        var cube;
+
+        function initObject() {
+            // 立方体
+            var geometry = new THREE.Geometry();
+            // 保存了两个点
+            geometry.vertices.push(new THREE.Vector3(-500, 0, 0));
+            geometry.vertices.push(new THREE.Vector3(500, 0, 0));
+            // 这两个点决定了x轴上的一条线段，将这条线段复制20次，分别平行移动到z轴的不同位置，就能够形成一组平行的线段。
+            // 同理，将p1p2这条线先围绕y轴旋转90度，然后再复制20份，平行于z轴移动到不同的位置，也能形成一组平行线。
+            // 经过上面的步骤，就能够得到坐标网格了。代码如下：
+            for (var i = 0; i <= 20; i++) {
+
+                var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({
+                    color: 0x000000,
+                    opacity: 0.2
+                }));
+                line.position.z = (i * 50) - 500;
+                scene.add(line);
+
+                var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({
+                    color: 0x000000,
+                    opacity: 0.2
+                }));
+                line.position.x = 90 * Math.PI / 180;
+                line.rotation.y = (i * 50) - 500;
+                scene.add(line);
+
+            }
+        }
+
+        function threeStart() {
+            initThree();
+            initCamera();
+            initScene();
+            initLight();
+            initObject();
+            renderer.clear();
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+
+</html>
