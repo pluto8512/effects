@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "gulp-cli": "^1.2.2",
     "jquery": "^3.1.1",
     "pixi.js": "^4.4.1",
-    "three": "^0.84.0"
+    "three": "^0.84.0",
+    "three.regular.helvetiker": "^1.0.0"
   }
 }

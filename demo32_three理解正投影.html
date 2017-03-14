@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body onload="init()">
+    <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+    <script src="./node_modules/three/build/three.js"></script>
+    <script>
+        function init() {
+            // 1.渲染器
+            var renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('mainCanvas')
+            });
+            renderer.setClearColor(0x000000); // 清除背景颜色
+
+            // 2.场景
+            var scene = new THREE.Scene();
+
+            // 3.相机
+            // @param 左右上下近远
+            // 当左右间隔距离和上下间隔距离和canvas的宽和高相同时 ，投影原内容的宽高
+            // 否则内容会变形
+            var camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+            // 相机默认是面向z轴负方向放置的，所以能看到原点处的正方体
+            // camera.position.set(0, 0, 5);
+            // 现在将相机右移一个单位，物体相对相机左移一个单位
+            // camera.position.set(1, 0, 5);
+            // 现在将照相机向下移，让照相机仰望正方体
+            // 因为照相机默认是观察z轴负方向的，所以看不到位于他上方的物体
+            camera.position.set(4, 2, 5);
+            // 让相机观察原点方向的物体
+            camera.lookAt(new THREE.Vector3(0, 0, 0));
+            scene.add(camera);
+            // 总结：相机可以设置投影方式，相机可以设置观察角度（观察角度由相机的位置和相机的瞄准方向决定）
+
+            // 4.添加相机
+            scene.add(camera);
+
+            // 5.添加内容
+            var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1),
+                new THREE.MeshBasicMaterial({
+                    color: 0xff0000,
+                    wireframe: true
+                })
+            );
+            scene.add(cube);
+
+            // 5.渲染
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+
+</html>

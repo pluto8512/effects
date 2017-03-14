@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body onload="init()">
+    <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+    <script src="./node_modules/three/build/three.js"></script>
+    <script>
+        function init() {
+            // 1.渲染器
+            var renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('mainCanvas')
+            });
+            renderer.setClearColor(0x000000); // 清除背景颜色
+
+            // 2.场景
+            var scene = new THREE.Scene();
+
+            // 3.相机
+            // 第一个参数（fov）:张角，相机的张角变大，那么视景体就变大了，内容自然就相对小了
+            // 因为canvas的宽高比是400/300，所以aspect的宽高比也设置400/300
+            var camera = new THREE.PerspectiveCamera(30, 400 / 300, 1, 10);
+            camera.position.set(1, 2, 5);
+            camera.lookAt(new THREE.Vector3(0, 0, 0));
+            scene.add(camera);
+            // 总结：相机的视景体就是相机可以看到的画面的范围，类似人眼睛可以看到的范围
+            // near/far:是相机到距离视景体最近和最远的距离
+
+            // 4.添加相机
+            scene.add(camera);
+
+            // 5.添加内容
+            // wireframe: true>说明图形由线条构成，不填充颜色
+            var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1),
+                new THREE.MeshBasicMaterial({
+                    color: 0xff0000,
+                    wireframe: true
+                })
+            );
+            scene.add(cube);
+
+            // 5.渲染
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+
+</html>

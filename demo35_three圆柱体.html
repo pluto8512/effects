@@ -1,0 +1,50 @@
+!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>圆柱体</title>
+</head>
+
+<body onload="init()">
+    <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+    <script src="./node_modules/three/build/three.js"></script>
+    <script>
+        function init() {
+            // 1.渲染器
+            var renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('mainCanvas')
+            });
+            renderer.setClearColor(0x000000); // 清除背景颜色
+
+            // 2.场景
+            var scene = new THREE.Scene();
+
+            // 3.相机
+            var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 1000);
+            camera.position.set(0, 0.2, 5);
+            camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+            // 4.添加相机
+            scene.add(camera);
+
+            // 5.添加内容
+            // THREE.CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded) 
+            // radiusTop：顶部的半径 radiusBottom：底部的半径 height：柱体的高 radiusSegments/heightSegments:分段 
+            // openEnded：表示是否没有顶面和底面，缺省值为false，表示有顶面和底面
+            var cube = new THREE.Mesh(new THREE.CylinderGeometry(1, 2, 2, 16, 3, true),
+                new THREE.MeshBasicMaterial({
+                    color: 0xff0000,
+                    wireframe: true
+                })
+            );
+            scene.add(cube);
+
+            // 5.渲染
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+
+</html>

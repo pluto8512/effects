@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body onload="init()">
+    <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+    <script src="./node_modules/three/build/three.js"></script>
+    <script>
+        function init() {
+            // 1.渲染器
+            var renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('mainCanvas')
+            });
+            renderer.setClearColor(0x000000); // 清除背景颜色
+
+            // 2.场景
+            var scene = new THREE.Scene();
+
+            // 3.相机
+            var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 1000);
+            // set的三个值的正值分别表示向右，向上，向外移动
+            camera.position.set(3, 3, 5);
+            camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+            // 4.添加相机
+            scene.add(camera);
+
+            // 5.添加内容
+            // 第一个参数：球体的半径
+            // 第二个参数：segmentsWidth相当于按经度方向把球体掰成8份
+            // 第三个参数：segmentsWidth相当于按维度方向把球体切成6份
+            // 当切的份数足够多那么球体就越圆润
+            // Math.PI / 6, Math.PI / 3：第四个参数表示起始的经度，第五个参数表示经度的跨度
+            // 这里是将已经切好了的球面分成8份和6份
+            // 第6个参数表示起始的维度，第7个参数表示维度的跨度
+            // 纬度的0的位置是极点的位置
+            // THREE.CircleGeometry(radius, segments, thetaStart, thetaLength) 创建一个圆，半径、份数、起始弧度、跨过的弧度
+            var cube = new THREE.Mesh(new THREE.SphereGeometry(1, 8, 6, Math.PI / 6, Math.PI / 3, 0, Math.PI / 3),
+                new THREE.MeshBasicMaterial({
+                    color: 0xff0000,
+                    wireframe: true
+                })
+            );
+            scene.add(cube);
+
+            // 5.渲染
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+
+</html>
