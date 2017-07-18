@@ -1,0 +1,407 @@
+/*qianxi*/
+/*_XD*/
+@function torem($px){
+  @return $px / 40 * 1rem;
+}
+@function toper($px){
+  @return $px /1010 * 100%;
+}
+/*login*/
+#myApp {
+    width: 100%;
+    height: 100%;
+}
+.qianxi-login {
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    position: relative;
+    .headImg {
+        width: 100%;
+        height: torem(276);
+        position: absolute;
+        top: toper(67);
+        img {
+            width: torem(236);
+            height: torem(76);
+            position: absolute;
+            top: 50%;
+            margin-top: torem(-38);
+            left: 50%;
+            margin-left: torem(-118);
+        }
+    }
+    .inputs {
+        width: 100%;
+        height: torem(292);
+        position: absolute;
+        top: toper(300);
+        text-align: center;
+        letter-spacing: torem(1);
+        .inputsBg {
+            height: torem(173);
+            width: torem(472);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: torem(-236);
+            margin-top: torem(-86.5);
+            >input {
+                height: torem(63);
+                width: 100%;
+                border-bottom: solid torem(2) #A8C1F7;
+                color: #999;
+            }
+            >input:nth-child(1) {
+                position:absolute;
+                top: 0;
+                left: 0;
+            }
+            >input:nth-child(2) {
+                position:absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+    .btn {
+        width: 100%;
+        height: torem(196);
+        position: absolute;
+        top: toper(592);
+        font-size: torem(28);
+        text-align: center;
+        .btnBg {
+             width: torem(469);
+             height: torem(152);
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             margin-top: torem(-76);
+             margin-left: torem(-234.5);
+             >div {
+                height: torem(65);
+                width: torem(469);
+                line-height: torem(65);
+                border-radius: torem(32.5);
+                -webkit-border-radius: torem(32.5);
+                border: solid torem(1) #5184ED;
+            }
+            >div:nth-child(1){
+                position: absolute;
+                top: 0;
+                color: #FFF;
+                background: #5184ED;
+            }
+            >div:nth-child(2){
+                position: absolute;
+                bottom: 0;
+                color: #5184ED;
+            }
+        }
+    }
+}
+#tipMask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    .tips {
+        width: torem(430);
+        height: torem(320);
+        background: #fff;
+        border-radius: torem(15);
+        -webkit-border-radius: torem(15);
+        position: absolute;
+        top: 50%;
+        margin-top: torem(-160);
+        left: 50%;
+        margin-left: torem(-215);
+        .text {
+            width: torem(430);
+            height: torem(108);
+            position: absolute;
+            left: 50%;
+            margin-left: torem(-215);
+            top: torem(50);
+            text-align: center;
+            font-size: torem(28);
+            color: #999;
+            letter-spacing: toerm(1);
+            line-height: torem(108);
+            padding: torem(0) torem(25);
+        }
+        .okBtn {
+            width: torem(369);
+            height: torem(68);
+            border-radius: torem(34);
+            -webkit-border-radius: torem(34);
+            background: #5184ED;
+            position: absolute;
+            bottom: torem(34);
+            left: 50%;
+            margin-left: torem(-184.5);
+            text-align: center;
+            font-size: torem(28);
+            color: #fff;
+            letter-spacing: toerm(1);
+            line-height: torem(68);
+        }
+    }   
+}
+/*registerOne*/
+.qianxi-registerOne {
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    position: relative;
+    .headImg {
+        width: 100%;
+        height: torem(276);
+        position: absolute;
+        top: toper(67);
+        img {
+             width: torem(236);
+            height: torem(76);
+            position: absolute;
+            top: 50%;
+            margin-top: torem(-38);
+            left: 50%;
+            margin-left: torem(-118);
+        }
+    }
+    .inputs {
+        width: 100%;
+        height: torem(292);
+        position: absolute;
+        top: toper(300);
+        text-align: center;
+        font-size: torem(20);
+        letter-spacing: torem(1);
+        .inputsBg {
+            height: torem(173);
+            width: torem(472);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: torem(-236);
+            margin-top: torem(-86.5);
+            >input {
+                height: torem(63);
+                width: 100%;
+                border-bottom: solid torem(2) #A8C1F7;
+                color: #999;
+            }
+            >input:nth-child(1) {
+                position:absolute;
+                top: 0;
+                left: 0;
+            }
+            >input:nth-child(2) {
+                position:absolute;
+                bottom: 0;
+                left: 0;
+            }
+            .verification {
+                height: torem(40);
+                line-height: torem(40);
+                width: torem(128);
+                position: absolute;
+                bottom: torem(10);
+                right: torem(2);
+                border: solid torem(2) #5184ED;
+                color: #5184ED;
+                border-radius: torem(20);
+                -webkit-border-radius: torem(20);
+                font-size: torem(18);
+                font-weight: 300;
+
+            }
+        }
+    }
+    .btn {
+        width: 100%;
+        height: torem(196);
+        position: absolute;
+        top: toper(592);
+        font-size: torem(28);
+        text-align: center;
+        .btnBg {
+             width: torem(469);
+             height: torem(152);
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             margin-top: torem(-76);
+             margin-left: torem(-234.5);
+             >div {
+                height: torem(65);
+                width: torem(469);
+                line-height: torem(65);
+                border-radius: torem(32.5);
+                -webkit-border-radius: torem(32.5);
+                border: solid torem(1) #5184ED;
+            }
+            >div:nth-child(1) {
+                position: absolute;
+                top: 0;
+                color: #FFF;
+                background: #5184ED;
+                letter-spacing: torem(4);
+            }
+            >p {
+                width: torem(469);
+                height: torem(65);
+                font-size: torem(23);
+                line-height: torem(65);
+                position: absolute;
+                bottom: 0;
+                color: #5184ED;
+            }
+        }
+    }
+}
+/*registerTwo*/
+.qianxi-registerTwo {
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    position: relative;
+    .headImg {
+        width: 100%;
+        height: torem(276);
+        position: absolute;
+        top: toper(67);
+        img {
+            width: torem(236);
+            height: torem(76);
+            position: absolute;
+            top: 50%;
+            margin-top: torem(-38);
+            left: 50%;
+            margin-left: torem(-118);
+        }
+    }
+    .inputs {
+        width: 100%;
+        height: torem(292);
+        position: absolute;
+        top: toper(300);
+        text-align: center;
+        .inputsBg {
+            height: torem(173);
+            width: torem(472);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: torem(-236);
+            margin-top: torem(-86.5);
+            >input {
+                height: torem(63);
+                width: 100%;
+                border-bottom: solid torem(2) #A8C1F7;
+                color: #999;
+            }
+            >input:nth-child(1) {
+                position:absolute;
+                top: 0;
+                left: 0;
+            }
+            >input:nth-child(2) {
+                position:absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+        .treaty {
+            width: 100%;
+            height: torem(28);
+            position: absolute;
+            bottom: torem(-50);
+            p {     
+                width: 100%;
+                height: torem(28);
+                font-size: torem(20);
+                line-height: torem(28);
+                text-align: left;
+                padding-left: torem(28);
+                color: #999;
+                span {
+                    color: #5184ED;
+                }
+            }
+            .wrap {
+                width: torem(28);
+                height: torem(28);
+                position: absolute;
+                top: torem(-17.5);
+                left: torem(-10);
+            }
+            #checkbox01 {
+                display: none;
+            }
+            input[type="checkbox"]+label {
+                display: inline-block;
+                width: 48%;
+                // margin-top: 10px;
+                // margin-left: 5px;
+                text-align: left;
+                -webkit-box-sizing: border-box;
+            }
+            label::before {
+                content: "";
+                display: inline-block;
+                width: torem(22);
+                height: torem(22);
+                background: #fff;
+                vertical-align: middle;
+                -webkit-border-radius: 50%;
+                margin-right: torem(2);
+                -webkit-box-sizing:border-box;
+                -webkit-transition:background ease-in .5s;
+                border: torem(2) #5184ED solid;
+            }
+            input[type="checkbox"]:checked+label::before{
+                // background-color: #5184ED;
+                // border: torem(2) #fff solid;
+                background-image: url("../images/selected.png");
+                background-size: 100% 100%;
+            }
+        }
+    }
+    .btn {
+        width: 100%;
+        height: torem(196);
+        position: absolute;
+        top: toper(600);
+        font-size: torem(28);
+        text-align: center;
+        .btnBg {
+             width: torem(469);
+             height: torem(152);
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             margin-top: torem(-76);
+             margin-left: torem(-234.5);
+             >div {
+                height: torem(65);
+                width: torem(469);
+                line-height: torem(65);
+                border-radius: torem(32.5);
+                -webkit-border-radius: torem(32.5);
+                border: solid torem(1) #5184ED;
+            }
+            >div:nth-child(1) {
+                position: absolute;
+                top: 0;
+                color: #FFF;
+                background: #5184ED;
+                letter-spacing: torem(4);
+            }
+        }
+    }
+}

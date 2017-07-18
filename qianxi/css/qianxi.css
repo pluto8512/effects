@@ -1,0 +1,397 @@
+/*common B!*/
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html, body {
+  background: #FFF;
+  font-family: "MicroSoft YaHei","sans-serif";
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #333; }
+
+a:hover {
+  color: #333; }
+
+input, textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  -webkit-appearance: none; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.clearfix::after,
+.clearfix::before {
+  content: ".";
+  line-height: 0;
+  height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both; }
+
+/*common E*/
+/*loginBegin*/
+.qianxi-login {
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  position: relative; }
+  .qianxi-login .headImg {
+    width: 100%;
+    height: 6.9rem;
+    position: absolute;
+    top: 6.63366%; }
+    .qianxi-login .headImg img {
+      width: 5.9rem;
+      height: 1.9rem;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.95rem;
+      left: 50%;
+      margin-left: -2.95rem; }
+  .qianxi-login .inputs {
+    width: 100%;
+    height: 7.3rem;
+    position: absolute;
+    top: 29.70297%;
+    text-align: center;
+    letter-spacing: 0.025rem; }
+    .qianxi-login .inputs .inputsBg {
+      height: 4.325rem;
+      width: 11.8rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -5.9rem;
+      margin-top: -2.1625rem; }
+      .qianxi-login .inputs .inputsBg > input {
+        height: 1.575rem;
+        width: 100%;
+        border-bottom: solid 0.05rem #A8C1F7;
+        color: #999; }
+      .qianxi-login .inputs .inputsBg > input:nth-child(1) {
+        position: absolute;
+        top: 0;
+        left: 0; }
+      .qianxi-login .inputs .inputsBg > input:nth-child(2) {
+        position: absolute;
+        bottom: 0;
+        left: 0; }
+  .qianxi-login .btn {
+    width: 100%;
+    height: 4.9rem;
+    position: absolute;
+    top: 58.61386%;
+    font-size: 0.7rem;
+    text-align: center; }
+    .qianxi-login .btn .btnBg {
+      width: 11.725rem;
+      height: 3.8rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -1.9rem;
+      margin-left: -5.8625rem; }
+      .qianxi-login .btn .btnBg > div {
+        height: 1.625rem;
+        width: 11.725rem;
+        line-height: 1.625rem;
+        border-radius: 0.8125rem;
+        -webkit-border-radius: 0.8125rem;
+        border: solid 0.025rem #5184ED; }
+      .qianxi-login .btn .btnBg > div:nth-child(1) {
+        position: absolute;
+        top: 0;
+        color: #FFF;
+        background: #5184ED; }
+      .qianxi-login .btn .btnBg > div:nth-child(2) {
+        position: absolute;
+        bottom: 0;
+        color: #5184ED; }
+
+#tipMask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none; }
+  #tipMask .tips {
+    width: 10.75rem;
+    height: 8rem;
+    background: #fff;
+    border-radius: 0.375rem;
+    -webkit-border-radius: 0.375rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -4rem;
+    left: 50%;
+    margin-left: -5.375rem; }
+    #tipMask .tips .text {
+      width: 10.75rem;
+      height: 2.7rem;
+      position: absolute;
+      left: 50%;
+      margin-left: -5.375rem;
+      top: 1.25rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #999;
+      letter-spacing: toerm(1);
+      line-height: 2.7rem;
+      padding: 0rem 0.625rem; }
+    #tipMask .tips .okBtn {
+      width: 9.225rem;
+      height: 1.7rem;
+      border-radius: 0.85rem;
+      -webkit-border-radius: 0.85rem;
+      background: #5184ED;
+      position: absolute;
+      bottom: 0.85rem;
+      left: 50%;
+      margin-left: -4.6125rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #fff;
+      letter-spacing: toerm(1);
+      line-height: 1.7rem; }
+
+/*loginEnd*/
+/*registerOneBegin*/
+.qianxi-registerOne {
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  position: relative; }
+  .qianxi-registerOne .headImg {
+    width: 100%;
+    height: 6.9rem;
+    position: absolute;
+    top: 6.63366%; }
+    .qianxi-registerOne .headImg img {
+      width: 5.9rem;
+      height: 1.9rem;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.95rem;
+      left: 50%;
+      margin-left: -2.95rem; }
+  .qianxi-registerOne .inputs {
+    width: 100%;
+    height: 7.3rem;
+    position: absolute;
+    top: 29.70297%;
+    text-align: center;
+    font-size: 0.5rem;
+    letter-spacing: 0.025rem; }
+    .qianxi-registerOne .inputs .inputsBg {
+      height: 4.325rem;
+      width: 11.8rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -5.9rem;
+      margin-top: -2.1625rem; }
+      .qianxi-registerOne .inputs .inputsBg > input {
+        height: 1.575rem;
+        width: 100%;
+        border-bottom: solid 0.05rem #A8C1F7;
+        color: #999; }
+      .qianxi-registerOne .inputs .inputsBg > input:nth-child(1) {
+        position: absolute;
+        top: 0;
+        left: 0; }
+      .qianxi-registerOne .inputs .inputsBg > input:nth-child(2) {
+        position: absolute;
+        bottom: 0;
+        left: 0; }
+      .qianxi-registerOne .inputs .inputsBg .verification {
+        height: 1rem;
+        line-height: 1rem;
+        width: 3.2rem;
+        position: absolute;
+        bottom: 0.25rem;
+        right: 0.05rem;
+        border: solid 0.05rem #5184ED;
+        color: #5184ED;
+        border-radius: 0.5rem;
+        -webkit-border-radius: 0.5rem;
+        font-size: 0.45rem;
+        font-weight: 300; }
+  .qianxi-registerOne .btn {
+    width: 100%;
+    height: 4.9rem;
+    position: absolute;
+    top: 58.61386%;
+    font-size: 0.7rem;
+    text-align: center; }
+    .qianxi-registerOne .btn .btnBg {
+      width: 11.725rem;
+      height: 3.8rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -1.9rem;
+      margin-left: -5.8625rem; }
+      .qianxi-registerOne .btn .btnBg > div {
+        height: 1.625rem;
+        width: 11.725rem;
+        line-height: 1.625rem;
+        border-radius: 0.8125rem;
+        -webkit-border-radius: 0.8125rem;
+        border: solid 0.025rem #5184ED; }
+      .qianxi-registerOne .btn .btnBg > div:nth-child(1) {
+        position: absolute;
+        top: 0;
+        color: #FFF;
+        background: #5184ED;
+        letter-spacing: 0.1rem; }
+      .qianxi-registerOne .btn .btnBg > p {
+        width: 11.725rem;
+        height: 1.625rem;
+        font-size: 0.575rem;
+        line-height: 1.625rem;
+        position: absolute;
+        bottom: 0;
+        color: #5184ED; }
+
+/*registerOneEnd*/
+/*registerTwoBegine*/
+.qianxi-registerTwo {
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  position: relative; }
+  .qianxi-registerTwo .headImg {
+    width: 100%;
+    height: 6.9rem;
+    position: absolute;
+    top: 6.63366%; }
+    .qianxi-registerTwo .headImg img {
+      width: 5.9rem;
+      height: 1.9rem;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.95rem;
+      left: 50%;
+      margin-left: -2.95rem; }
+  .qianxi-registerTwo .inputs {
+    width: 100%;
+    height: 7.3rem;
+    position: absolute;
+    top: 29.70297%;
+    text-align: center; }
+    .qianxi-registerTwo .inputs .inputsBg {
+      height: 4.325rem;
+      width: 11.8rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -5.9rem;
+      margin-top: -2.1625rem; }
+      .qianxi-registerTwo .inputs .inputsBg > input {
+        height: 1.575rem;
+        width: 100%;
+        border-bottom: solid 0.05rem #A8C1F7;
+        color: #999; }
+      .qianxi-registerTwo .inputs .inputsBg > input:nth-child(1) {
+        position: absolute;
+        top: 0;
+        left: 0; }
+      .qianxi-registerTwo .inputs .inputsBg > input:nth-child(2) {
+        position: absolute;
+        bottom: 0;
+        left: 0; }
+    .qianxi-registerTwo .inputs .treaty {
+      width: 100%;
+      height: 0.7rem;
+      position: absolute;
+      bottom: -1.25rem; }
+      .qianxi-registerTwo .inputs .treaty p {
+        width: 100%;
+        height: 0.7rem;
+        font-size: 0.5rem;
+        line-height: 0.7rem;
+        text-align: left;
+        padding-left: 0.7rem;
+        color: #999; }
+        .qianxi-registerTwo .inputs .treaty p span {
+          color: #5184ED; }
+      .qianxi-registerTwo .inputs .treaty .wrap {
+        width: 0.7rem;
+        height: 0.7rem;
+        position: absolute;
+        top: -0.4375rem;
+        left: -0.25rem; }
+      .qianxi-registerTwo .inputs .treaty #checkbox01 {
+        display: none; }
+      .qianxi-registerTwo .inputs .treaty input[type="checkbox"] + label {
+        display: inline-block;
+        width: 48%;
+        text-align: left;
+        -webkit-box-sizing: border-box; }
+      .qianxi-registerTwo .inputs .treaty label::before {
+        content: "";
+        display: inline-block;
+        width: 0.55rem;
+        height: 0.55rem;
+        background: #fff;
+        vertical-align: middle;
+        -webkit-border-radius: 50%;
+        margin-right: 0.05rem;
+        -webkit-box-sizing: border-box;
+        -webkit-transition: background ease-in .5s;
+        border: 0.05rem #5184ED solid; }
+      .qianxi-registerTwo .inputs .treaty input[type="checkbox"]:checked + label::before {
+        background-image: url("../images/selected.png");
+        background-size: 100% 100%; }
+  .qianxi-registerTwo .btn {
+    width: 100%;
+    height: 4.9rem;
+    position: absolute;
+    top: 59.40594%;
+    font-size: 0.7rem;
+    text-align: center; }
+    .qianxi-registerTwo .btn .btnBg {
+      width: 11.725rem;
+      height: 3.8rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -1.9rem;
+      margin-left: -5.8625rem; }
+      .qianxi-registerTwo .btn .btnBg > div {
+        height: 1.625rem;
+        width: 11.725rem;
+        line-height: 1.625rem;
+        border-radius: 0.8125rem;
+        -webkit-border-radius: 0.8125rem;
+        border: solid 0.025rem #5184ED; }
+      .qianxi-registerTwo .btn .btnBg > div:nth-child(1) {
+        position: absolute;
+        top: 0;
+        color: #FFF;
+        background: #5184ED;
+        letter-spacing: 0.1rem; }
+
+/*registerTwoEnd*/
+
+/*# sourceMappingURL=qianxi.css.map */

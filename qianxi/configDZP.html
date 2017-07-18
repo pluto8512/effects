@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">  
+	<meta http-equiv="x-rim-auto-match" content="none">  
+    <!--适配-->
+    <title>钱戏-大转盘-后台配置</title>
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/qianxiConfig.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery-weui.min.css">
+</head>
+<body>
+    <!--游戏首页背景图-->
+    <div class="gamePoster">
+        <!--个人中心按钮-->
+        <div class="persCenter">
+            <p><span>个人</span><span>中心</span></p>
+        </div>
+    </div>
+    <!--活动名称-->
+    <div class="actName">
+        <div class="group-actName">
+            <sapn>活动名称:</sapn>
+            <input type="text">
+            <i class="icon"></i>
+        </div>
+    </div>
+    <!--活动时间-->
+    <div class="actTime">
+        <p>活动时间:</p>
+        <!--时间选择器-->
+        <div class="timePicker">
+            <!--<i class="startI"></i>
+            <s class="startAngle"></s>-->
+            <input class="weui-input" id="startTime" type="text" value="" readonly="">
+            <p>至</p>
+            <!--<i class="endI"></i>
+            <s class="endAngle"></s>-->
+            <input class="weui-input endCss" id="endTime" type="text" value="" readonly="">
+        </div>
+    </div>
+    <!--商品设置-->
+    <div class="productSet">
+        <p class="edit-oneLevelTitle">商品设置:</p>
+        <div class="details">
+            <div class="productName">
+                <span class="edit-secondLevelTitle">商品名称:</span>
+                <input class="inpLong edit-inpLong" type="text">
+            </div>
+            <div class="productNum">
+                <span class="edit-secondLevelTitle">商品数量:</span>
+                <div class="longinp_group">
+                    <input class="inpLong edit-inpLong" type="text">
+                    <i class="edit-unit">份</i>
+                </div>
+            </div>
+            <div class="oldPrice">
+                <span class="edit-secondLevelTitle">原价:</span>
+                <div class="oldPrice_group">
+                    <input class="inpshort edit-inpshort" type="text">
+                    <i class="edit-unit">元</i>
+                </div>
+            </div>
+            <div class="bottomPrice">
+                <span class="edit-secondLevelTitle">底价:</span>
+                <div class="bottomPrice_group">
+                    <input class="inpshort edit-inpshort" type="text">
+                    <i class="edit-unit">元</i>
+                </div>
+            </div>
+            <div class="bargainRange">
+                <span class="bottom edit-secondLevelTitle">砍价金额范围:</span>
+                <div class="bottom_group">
+                    <input class="inpbottom inpshort edit-inpshort" type="text">
+                    <i class="edit-unit">元</i>
+                </div>
+                <span class="top edit-secondLevelTitle">至</span>
+                <div class="top_group">
+                    <input class="inptop inpshort edit-inpshort" type="text">
+                    <i class="edit-unit">元</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--商品图片-->
+    <div class="productPic">
+        <p class="edit-oneLevelTitle">商品图片:</p>
+        <div class="productPhoto"><div class="bottom">删除</div></div>
+        <div class="upPhotoBtn">上传图片</div>
+        <div class="tip">
+            <p>请上传一张商品图片</p>
+            <p>建议尺寸200X200px</p>
+            <p>图片格式: .jpg.png</p>
+        </div>
+    </div>
+    <!--活动规则说明-->
+    <div class="actRule">
+        <p class="edit-oneLevelTitle">活动规则说明:<span> (点击更改)</span></p>
+        <!--活动说明编辑-->
+        <textarea name="ruleTips" rows="5" id="ruleTips" placeholder="这里填写商家自定义的活动说明"></textarea>
+    </div>
+    <!--领奖信息-->
+    <div class="awardInfo">
+        <p class="edit-oneLevelTitle">领奖信息:</span></p>
+        <!--领奖联系-->
+        <div class="awardLink">
+            <span class="edit-secondLevelTitle">领奖联系:</span>
+            <input class="inpLong edit-inpLong" type="text">
+        </div>
+        <!--领奖地址-->
+        <div class="awardAdress">
+            <span class="edit-secondLevelTitle">领奖地址:</span>
+            <textarea class="edit-textArea" name="addressTips" rows="5" id="awardAddress" placeholder=""></textarea>
+        </div>
+        <!--兑奖须知-->
+        <div class="awardNeedKnow">
+            <span class="edit-secondLevelTitle">兑奖须知:</span>
+            <textarea class="edit-textArea" name="tips" id="aswardNeedKnow" rows="5" placeholder=""></textarea>
+        </div>
+        <!--预览/保存活动-->
+        <div class="actSave">
+            <div class="preview edit-btn">预览活动</div>
+            <div class="save edit-btn">保存活动</div>
+        </div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/jquery-weui.min.js"></script>
+    <script>    
+        $(document).ready(function(){
+            $("#startTime").datetimePicker({
+                title: '开始时间',
+                min: "2014-12-12",
+                max: "2022-12-12 12:12",
+                onChange: function (picker, values, displayValues) {
+                console.log(values);
+                }
+            });
+        });
+        $(document).ready(function(){
+            $("#endTime").datetimePicker({
+                title: '开始时间',
+                min: "2014-12-12",
+                max: "2022-12-12 12:12",
+                onChange: function (picker, values, displayValues) {
+                console.log(values);
+                }
+            });
+        });
+        // textarea默认文本
+        var placeholder = '1.活动开始之后可以自己砍一刀;\n2.分享给好友,让好友助力帮忙砍到更低的价格;\n3.再砍价的过程中若发现自己心仪的价格时能随时进行支付;\n4.砍到低价时,也可以进行买买买了;';
+        $('.actRule textarea').val(placeholder);
+        $('.actRule textarea').focus(function() {
+            if ($(this).val() == placeholder) {
+                $(this).val('');
+            }
+        });
+
+        $('.actRule textarea').blur(function() {
+            if ($(this).val() == '') {
+                $(this).val(placeholder);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">  
+	<meta http-equiv="x-rim-auto-match" content="none">  
+    <!--适配-->
+    <title>钱戏-注冊1</title>
+    <link rel="stylesheet" type="text/css" href="./css/qianxi.css">
+</head>
+<body>
+    <!--registerOne-->
+    <div id="registerOnePage" class="qianxi-registerOne">
+        <div id="LHeadImg" class="headImg">
+            <img src="./images/logo.png" alt="">
+        </div>
+        <div id="LInput" class="inputs">
+            <div class="inputsBg">
+                <input id="phone" type="text" name="phone" value="请输入手机号码">
+                <input id="yanzhengma" type="text" name="password" value="请输入验证码">
+                <div class="verification">获取验证码</div>
+            </div>
+        </div>
+        <div id="LBtn" class="btn">
+            <div class="btnBg">
+                <div id="login">下一步</div>
+                <p>已有账号&nbsp;&nbsp;,&nbsp;&nbsp;直接登录</p>
+            </div>
+        </div>
+    </div>
+    <!--tipMask-->
+    <div id="tipMask">
+    </div>
+    
+    <script src="./js/jquery.js"></script>
+    <script src="./js/common.js"></script>
+    <script>
+        $(document).ready(function(){
+            var G = {
+                // 锁-不能重复点击登录按钮(false 为锁住)
+                'lock_login':true,
+            };
+            var $phoneNumber = $("#phone");
+            var $yanzhengma = $("#yanzhengma");
+
+            // 校验
+            var check = function(inp1, inp2, regEx1, regEx2, tips1, tips2) {
+                if (regEx1.test(inp1.value) && regEx2.test(inp2.value)) {
+                    return true;
+                } else if(!regEx1.test(inp1[0].value)){
+                    // 提示页面
+                    var tipHtml = 
+                    '<div class="tips">\
+                            <p class="text">'+tips1+'</p>\
+                            <div class="okBtn" id="okBtn">知道了</div>\
+                        </div>';
+                    $("#tipMask").html(tipHtml);
+                    $("#tipMask").show();
+                } else if(regEx1.test(inp1[0].value) && !regEx2.test(inp2[0].value)){
+                    // 提示页面
+                    var tipHtml = 
+                    '<div class="tips">\
+                            <p class="text">'+tips2+'</p>\
+                            <div class="okBtn" id="okBtn">知道了</div>\
+                        </div>';
+                    $("#tipMask").html(tipHtml);
+                    $("#tipMask").show();
+                }
+            }
+
+            // 校验-正则表达式
+            var regMobile = /^(13[0-9]|14[57]|15[0-9]|18[0-9])\d{8}$/;
+
+            $("#login").off("click").on("click",function(){
+                // TODO
+                // check($phoneNumber,$password,regMobile,regPassword,"亲！电话号码不正确哦~","亲！密码不符合规范哦~");
+            });
+            
+            $(document).on('click','#okBtn',function(){
+                $("#tipMask").hide();
+            });
+
+            // 点击文字消失
+            var inpAnimation = (function() {
+                $("#phone").focus(function(){  
+                    if(this.value == this.defaultValue) {  
+                        this.value='';  
+                    }  
+                });  
+                $("#phone").blur(function(){  
+                    if(this.value == '') {  
+                        this.value=this.defaultValue;  
+                    }  
+                });  
+                $("#yanzhengma").focus(function(){  
+                    if(this.value == this.defaultValue) {  
+                        this.value='';  
+                    }  
+                });  
+                $("#yanzhengma").blur(function(){  
+                    if(this.value == '') {  
+                        this.value=this.defaultValue;  
+                    }  
+                });  
+            })();
+        });
+    </script>
+</body>
+</html>

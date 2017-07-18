@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义多选按钮</title>
+    <style>
+    .box {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+        position: relative;
+        background: #fff;
+        vertical-align: middle;
+        border:1px solid #e4e4e7;
+        border-radius: 100%;
+    }
+    .box input {
+        opacity: 0;
+        position: absolute;
+        top:-3px;
+        left:-4px;
+        width: 100%;
+        height:100%;
+        z-index:100;
+    }
+    input+span {
+        display: block;
+        width: 6px;
+        height: 6px;
+        border-radius:50%;
+        position: absolute;
+        background: #1796f9;
+        top: 50%;
+        left:50%;
+        margin: -3px 0  0 -3px;
+        z-index:1;
+    }
+    input[type="radio"] + span {
+        opacity: 0;
+    }
+    input[type="radio"]:checked + span {
+        opacity: 1;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="radio" id="bad-1" name="evaluation"  /><span></span>
+    </div>
+</body>
+</html>

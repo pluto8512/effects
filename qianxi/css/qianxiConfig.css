@@ -1,0 +1,396 @@
+/*game'bg*/
+.gamePoster {
+  height: 8.9rem;
+  width: 100%;
+  background: url("../images/login-gameBg.jpg") no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+  .gamePoster .persCenter {
+    opacity: 0.8;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    font-size: 0.575rem;
+    color: #fff;
+    background: #011520;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.475rem; }
+    .gamePoster .persCenter p {
+      height: 1.45rem;
+      width: 2rem;
+      line-height: 0.725rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -0.725rem;
+      margin-left: -0.5875rem; }
+      .gamePoster .persCenter p span {
+        display: block; }
+
+/*activity'name*/
+.actName {
+  width: 100%;
+  height: 3.125rem;
+  position: relative;
+  border-bottom: dashed 0.025rem #C6C6C6; }
+  .actName .group-actName {
+    width: 14.375rem;
+    height: 0.95rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.475rem;
+    margin-left: -7.1875rem;
+    font-size: 0.65rem;
+    color: black;
+    letter-spacing: 0.05rem; }
+    .actName .group-actName input {
+      float: right;
+      width: 11.125rem;
+      height: 0.95rem;
+      padding: 0 0.75rem 0 0.5rem;
+      border-bottom: solid 0.05rem #A8C4F6;
+      color: #5185EB; }
+    .actName .group-actName i {
+      display: inline-block;
+      width: 0.775rem;
+      height: 0.775rem;
+      background: url("../images/login-change.png") no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      top: 0;
+      right: 0; }
+
+/*activity'time*/
+.actTime {
+  width: 100%;
+  height: 7.65rem;
+  position: relative;
+  border-bottom: dashed 0.025rem #C6C6C6; }
+  .actTime > p {
+    font-size: 0.65rem;
+    color: black;
+    letter-spacing: 0.05rem;
+    position: absolute;
+    left: 0.8rem;
+    top: 0.95rem; }
+  .actTime .weui-input {
+    width: 10.75rem;
+    height: 1.8rem;
+    border-radius: 0.225rem;
+    -webkit-border-radius: 0.225rem;
+    border: solid 0.025rem #B7B7B7;
+    position: absolute;
+    left: 4.075rem;
+    top: 1.95rem;
+    font-size: 0.55rem;
+    color: black;
+    letter-spacing: 0.05rem;
+    padding-left: 1rem; }
+  .actTime .endCss {
+    top: 5.175rem; }
+  .actTime .timePicker p {
+    font-size: 0.65rem;
+    color: black;
+    letter-spacing: 0.05rem;
+    position: absolute;
+    left: 4.4rem;
+    top: 4.05rem; }
+  .actTime .timePicker .startI {
+    width: 0.025rem;
+    height: 1.8rem;
+    position: absolute;
+    right: 2.125rem;
+    top: 1.95rem;
+    background: #B7B7B7;
+    z-index: 99; }
+  .actTime .timePicker .endI {
+    width: 0.025rem;
+    height: 1.8rem;
+    position: absolute;
+    right: 2.125rem;
+    top: 5.175rem;
+    background: #B7B7B7;
+    z-index: 99; }
+  .actTime .timePicker .startAngle {
+    border: 0.375rem;
+    border-color: #5085ED transparent transparent transparent;
+    border-style: solid;
+    position: absolute;
+    right: 1.025rem;
+    top: 5.95rem;
+    z-index: 99; }
+
+/*product'setting*/
+.edit-inpLong {
+  height: 1.8rem;
+  width: 10.75rem;
+  border-radius: 0.225rem;
+  -webkit-border-radius: 0.225rem;
+  border: solid 0.025rem #C6C6C6;
+  position: absolute;
+  padding-left: 0.5rem; }
+
+.edit-inpshort {
+  width: 4.325rem;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  color: black;
+  border-radius: 0.225rem;
+  -webkit-border-radius: 0.225rem;
+  border: solid 0.025rem #C6C6C6;
+  position: absolute;
+  padding-left: 0.5rem;
+  padding-right: 0.75rem; }
+
+.edit-oneLevelTitle {
+  font-size: 0.65rem;
+  color: black;
+  letter-spacing: 0.05rem;
+  position: absolute; }
+
+.edit-secondLevelTitle {
+  font-size: 0.575rem;
+  color: black;
+  position: absolute; }
+
+.edit-unit {
+  height: 1.8rem;
+  line-height: 1.8rem;
+  width: 0.75rem;
+  font-size: 0.575rem;
+  font-style: normal;
+  color: #C6C6C6;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -0.9rem; }
+
+.productSet {
+  width: 100%;
+  height: 12.65rem;
+  border-bottom: dashed 0.025rem #C6C6C6;
+  position: relative; }
+  .productSet > p {
+    left: 0.8rem;
+    top: 0.95rem; }
+  .productSet .productName span {
+    left: 1.75rem;
+    top: 2.7rem; }
+  .productSet .productName input {
+    top: 2.25rem;
+    left: 4.65rem; }
+  .productSet .productNum span {
+    top: 5.25rem;
+    left: 1.75rem; }
+  .productSet .longinp_group {
+    height: 1.8rem;
+    width: 10.75rem;
+    position: absolute;
+    top: 4.85rem;
+    left: 4.65rem; }
+  .productSet .productNum input {
+    top: 0;
+    left: 0; }
+  .productSet .oldPrice span {
+    top: 7.875rem;
+    left: 2.925rem; }
+  .productSet .oldPrice_group {
+    width: 4.325rem;
+    height: 1.8rem;
+    position: absolute;
+    top: 7.5rem;
+    left: 4.675rem; }
+  .productSet .oldPrice input {
+    top: 0rem;
+    left: 0rem; }
+  .productSet .bottomPrice span {
+    top: 7.875rem;
+    left: 9.425rem; }
+  .productSet .bottomPrice_group {
+    width: 4.325rem;
+    height: 1.8rem;
+    position: absolute;
+    top: 7.5rem;
+    left: 11.075rem; }
+  .productSet .bottomPrice input {
+    top: 0rem;
+    left: 0rem; }
+  .productSet .bargainRange .bottom {
+    top: 10.6rem;
+    left: 0.6rem; }
+  .productSet .bargainRange .bottom_group {
+    width: 4.325rem;
+    height: 1.8rem;
+    position: absolute;
+    top: 10.15rem;
+    left: 4.675rem; }
+  .productSet .bargainRange .inpbottom {
+    top: 0rem;
+    left: 0rem; }
+  .productSet .bargainRange .top {
+    top: 10.6rem;
+    left: 9.675rem; }
+  .productSet .bargainRange .top_group {
+    width: 4.325rem;
+    height: 1.8rem;
+    position: absolute;
+    top: 10.15rem;
+    left: 11.075rem; }
+  .productSet .bargainRange .inptop {
+    top: 0rem;
+    left: 0rem; }
+
+/*product'pic*/
+.productPic {
+  width: 100%;
+  height: 9.525rem;
+  border-bottom: dashed 0.025rem #C6C6C6;
+  position: relative; }
+  .productPic > p {
+    left: 0.8rem;
+    top: 0.95rem; }
+  .productPic .productPhoto {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 0.225rem;
+    -webkit-border-radius: 0.225rem;
+    position: absolute;
+    top: 2.9rem;
+    left: 1.675rem;
+    border: solid 0.025rem #C6C6C6; }
+    .productPic .productPhoto .bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1.25rem;
+      text-align: center;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 0 0 0.225rem 0.225rem;
+      -webkit-border-radius: 0 0 0.225rem 0.225rem; }
+  .productPic .upPhotoBtn {
+    width: 6.05rem;
+    height: 1.825rem;
+    text-align: center;
+    color: #fff;
+    line-height: 1.825rem;
+    letter-spacing: 0.05rem;
+    border-radius: 0.225rem;
+    -webkit-border-radius: 0.225rem;
+    background: #8E8E8E;
+    position: absolute;
+    top: 2.9rem;
+    right: 1.675rem;
+    font-size: 0.575rem; }
+  .productPic .tip {
+    width: 6.05rem;
+    height: 2.625rem;
+    line-height: 0.875rem;
+    font-size: 0.575rem;
+    color: #8E8E8E;
+    position: absolute;
+    top: 5.325rem;
+    right: 1.75rem;
+    text-align: center; }
+
+/*'activity'rule*/
+.actRule {
+  width: 100%;
+  height: 9.5rem;
+  border-bottom: dashed 0.025rem #C6C6C6;
+  position: relative; }
+  .actRule > p {
+    font-size: 0.65rem;
+    color: black;
+    letter-spacing: 0.05rem;
+    position: absolute;
+    left: 0.8rem;
+    top: 0.95rem; }
+    .actRule > p span {
+      color: #C6C6C6; }
+  .actRule > textarea {
+    width: 14.5rem;
+    height: 6.25rem;
+    line-height: 1.175rem;
+    font-size: 0.6rem;
+    padding: 0.25rem 0.5rem;
+    border: solid 0.025rem #C6C6C6;
+    border-radius: 0.225rem;
+    -webkit-border-radius: 0.225rem;
+    position: absolute;
+    left: 0.75rem;
+    top: 2.275rem; }
+
+/*award'information*/
+.edit-textArea {
+  height: 2.775rem;
+  width: 10.75rem;
+  border-radius: 0.225rem;
+  -webkit-border-radius: 0.225rem;
+  border: solid 0.025rem #C6C6C6;
+  position: absolute;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.6rem; }
+
+.edit-btn {
+  width: 5.05rem;
+  height: 1.4rem;
+  font-size: 0.675rem;
+  line-height: 1.4rem;
+  text-align: center;
+  border: solid 0.025rem #5286EC;
+  border-radius: 0.7rem;
+  -webkit-border-radius: 0.7rem;
+  position: absolute; }
+
+.awardInfo {
+  width: 100%;
+  height: 14.75rem;
+  position: relative; }
+  .awardInfo > p {
+    font-size: 0.65rem;
+    color: black;
+    letter-spacing: 0.05rem;
+    position: absolute;
+    left: 0.8rem;
+    top: 0.95rem; }
+  .awardInfo .awardLink span {
+    top: 3.475rem;
+    left: 1.3rem; }
+  .awardInfo .awardLink input {
+    top: 3rem;
+    left: 4.275rem; }
+  .awardInfo .awardAdress span {
+    top: 6.375rem;
+    left: 1.3rem; }
+  .awardInfo .awardAdress textarea {
+    top: 5.45rem;
+    left: 4.275rem; }
+  .awardInfo .awardNeedKnow span {
+    top: 9.625rem;
+    left: 1.3rem; }
+  .awardInfo .awardNeedKnow textarea {
+    top: 8.85rem;
+    left: 4.275rem; }
+  .awardInfo .actSave {
+    width: 100%;
+    height: 2.25rem;
+    background: #A6A6A6;
+    position: absolute;
+    bottom: 0; }
+    .awardInfo .actSave .preview {
+      background: #fff;
+      color: #5286EC;
+      left: 1.8rem;
+      top: 0.4rem; }
+    .awardInfo .actSave .save {
+      background: #5286EC;
+      color: #fff;
+      right: 1.8rem;
+      top: 0.4rem; }
+
+/*# sourceMappingURL=qianxiConfig.css.map */

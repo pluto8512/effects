@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">  
+	<meta http-equiv="x-rim-auto-match" content="none">  
+    <!--适配-->
+    <title>钱戏-照片上传-功能抽取</title>
+    <style>
+    /*common B!*/
+    *,
+    ::before,
+    ::after {
+    padding: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+
+    html, body {
+    background: #FFF;
+    font-family: "MicroSoft YaHei","sans-serif";
+    width: 100%;
+    height: 100%;
+    position: relative; }
+
+    ul, ol {
+    list-style: none; }
+
+    a {
+    text-decoration: none;
+    color: #333; }
+
+    a:hover {
+    color: #333; }
+
+    input, textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    -webkit-appearance: none; }
+
+    .fl {
+    float: left; }
+
+    .fr {
+    float: right; }
+
+    .clearfix::after,
+    .clearfix::before {
+    content: ".";
+    line-height: 0;
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both; }
+    /*common E*/  
+    #file_photo {
+        opacity: 0;
+        position: fixed;
+        width: 0.025rem;
+        height: 0.025rem;
+        top: 0;
+        left: 0;
+    }
+    .showPhoto {
+        width: 5rem;
+        height: 5rem;
+        background: skyblue;
+        position: absolute;
+        left: 50%;
+        margin-left: -2.5rem;
+        top: 30%;
+    }
+    .adjustingImg {
+        width: 100%;
+        height: 100%;
+    }
+    .btnUpPhoto {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 1rem;
+        -webkit-border-radius: 1rem;
+        background: pink;
+        position: absolute;
+        left: 50%;
+        margin-left: -1rem;
+        top: 50%;
+    }
+    .mobile-wrap {
+        width: 100%;
+        height: 100%;
+        background: yellow;
+        position: relative;
+    }
+    #caijianBox{
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 11;
+        }
+        .container-imgmatch{
+            width: 15rem;
+            height: 17rem;
+            margin: 1rem auto 0 auto;
+        }
+        #noCj{
+            font-size: 1rem;
+            position: absolute;
+            bottom: 1rem;
+            left: 0.5rem;
+            color: white;
+        }
+        #yesCj{
+            position: absolute;
+            bottom: 1rem;
+            right: 0.5rem;
+            font-size: 1rem;
+            color: white;
+        }
+        .caijianTip{
+            text-align: center;
+            font-size: 0.7rem;
+            color: white;
+            font-weight: bold;
+        }
+        #cutL{
+            background: skyblue;
+        }
+        #cutR{
+            background: skyblue;
+        }
+        .btn-primary {
+            margin: 0.5rem 1rem 0.5rem 1rem;
+            width: 4.5rem;
+            height: 2rem;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(221,221,221,0.5);
+            border-radius: 0.2rem;
+            border: none;
+        }
+        .cropper-bg {
+            background-image: none !important;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="./css/upPhoto/cropper.css">
+</head>
+<body>
+     <!--调用图库的照片-->
+    <input type='file' id='file_photo'/>
+    <div class="mobile-wrap">
+        <div class="showPhoto">
+            <img class="adjustingImg" src="" alt="">
+        </div>
+        <div class="btnUpPhoto" id='upPhoto'></div>
+    </div>
+    <!--cropper-->
+    <div id="caijianBox">
+        <div class="container-imgmatch">
+            <img src="">
+        </div>
+        <div class="docs-buttons" style="text-align:center;">
+                <div class="btn-group">
+                    <button id="cutL" type="button" class="btn btn-primary" data-method="rotate" data-option="-90" title="Rotate Left">
+                        
+                    </button>
+                    <button id="cutR" type="button" class="btn btn-primary" data-method="rotate" data-option="90" title="Rotate Right">
+                        
+                    </button>
+            </div>
+        </div>
+        <p class="caijianTip">左右两边的按钮可以旋转图片哦~</p>	
+
+        <a id="noCj" href="javascript:void(0);">取消</a> 
+        <a id="yesCj" href="javascript:void(0);">选取</a> 
+    </div>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/upPhoto/upload_pic.js"></script>
+    <!--图片裁剪-->
+    <script src="./js/upPhoto/megapix-image.js"></script>
+    <script src="./js/upPhoto/exif.js"></script>
+    <script src="./js/upPhoto/cropper.js"></script>
+    <!--图片裁剪上传方法-->
+    <script src="./js/upPhoto/packCutPhoto.js"></script>
+    <script>
+    $(document).ready(function(){
+        window.uptoken = "X4i0IvBkFPckPsI5RDPYuri-srb3tlMjtZlm08lE:THIr3KYdCzpOWd05dtZYui4GQaI=:eyJzY29wZSI6InlvdXl1IiwiZGVhZGxpbmUiOjE0OTkwODg4NTd9";
+        // 上传图片项目名
+	    window.proj = 'imgmatch';
+	    // 用户上传图片域名
+	    window.imgUrlPre = "http://imgcdn.youyu.weijuju.com/";
+        // 点击上传图片
+        var actionListener = (function(){
+            $("#upPhoto").on("click",function(){
+                $("#file_photo").click();
+            });
+            
+            // 监听图片的变化
+            $("#file_photo").change(function(){
+                var that = this;
+                // 裁剪图片的方法
+                cutPic(that);
+            }); 
+
+            // 【点击】“确定”裁剪
+            $("#yesCj").on("click", function() {
+
+                imgPreview($('.adjustingImg'), $(this)[0], function(){//失败后回调
+                    alert("上传图片失败")
+                },function(){
+                    console.log("上传图片成功");
+                });
+            
+                $('#file_photo').replaceWith('<input type="file" id="file_photo" />');
+                $('#file_photo').change(function(){
+                    var that = this;
+                    cutPic(that);
+                });
+            });     
+
+            // 【点击】'图片旋转按钮'
+            $('.docs-buttons').on('click','[data-method]',function() {
+                var $this = $(this);
+                // 获取点击的按钮上的旋转角度信息
+                var data = $this.data();
+                var $target;
+                var result;
+
+                if ($this.prop('disabled') || $this.hasClass('disabled')) {
+                    return;
+                }
+
+                if ($('.container-imgmatch > img').data('cropper') && data.method) {
+                    data = $.extend({}, data); // Clone a new one
+
+                    if (typeof data.target !== 'undefined') {
+                        $target = $(data.target);
+
+                        if (typeof data.option === 'undefined') {
+                            try {
+                                data.option = JSON.parse($target.val());
+                            } catch (e) {
+                                console.log(e.message);
+                            }
+                        }
+                    }
+
+                    result = $('.container-imgmatch > img').cropper(data.method, data.option,data.secondOption);
+
+                    switch (data.method) {
+                    case 'scaleX':
+                    case 'scaleY':
+                        $(this).data('option', -data.option);
+                        break;
+
+                    case 'getCroppedCanvas':
+                        if (result) {
+
+                            // Bootstrap's Modal
+                            $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
+
+                            if (!$download.hasClass('disabled')) {
+                                $download.attr('href', result.toDataURL('image/jpeg'));
+                            }
+                        }
+
+                        break;
+                    }
+
+                    if ($.isPlainObject(result) && $target) {
+                        try {
+                            $target.val(JSON.stringify(result));
+                        } catch (e) {
+                            console.log(e.message);
+                        }
+                    }
+
+                }
+            });
+        })();
+    }); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">  
+	<meta http-equiv="x-rim-auto-match" content="none">  
+    <!--适配-->
+    <title>钱戏-注冊2</title>
+    <link rel="stylesheet" type="text/css" href="./css/qianxi.css">
+</head>
+<body>
+    <!--registerTwo-->
+    <div id="registerTwoPage" class="qianxi-registerTwo">
+        <div id="LHeadImg" class="headImg">
+            <img src="./images/logo.png" alt="">
+        </div>
+        <div id="LInput" class="inputs">
+            <div class="inputsBg">
+                <input id="password" type="text" name="password" value="请输入新密码 （6~20位字母或数字）">
+                <input id="rePassword" type="text" name="rePassword" value="请再次确认密码">
+                <div class="treaty">
+                    <div class="wrap">
+                        <input type="checkbox" id="checkbox01" />
+                        <label for="checkbox01"></label>
+                    </div>
+                    <p>阅读并接受<span>《前戏互动用户协议》</span></p>
+                </div>
+            </div>
+        </div>
+        <div id="LBtn" class="btn">
+            <div class="btnBg">
+                <div id="login">完成</div>
+            </div>
+        </div>
+    </div>
+
+    <!--tipMask-->
+    <div id="tipMask">
+    </div>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/common.js"></script>
+    <script>
+        $(document).ready(function(){
+            var G = {
+                // 锁-不能重复点击完成按钮(false 为锁住)
+                'lock_login':true,
+            };
+            var $password = $("#password");
+            var $rePassword = $("#rePassword");
+
+            // 校验
+            var check = function(inp1, inp2, regEx1, regEx2, tips1, tips2) {
+                if (regEx1.test(inp1[0].value) && regEx2.test(inp2[0].value) && (inp1[0].value == inp2[0].value)) {
+                    return true;
+                } else if(!regEx1.test(inp1[0].value)){
+                    // 提示页面
+                    var tipHtml = 
+                    '<div class="tips">\
+                            <p class="text">'+tips1+'</p>\
+                            <div class="okBtn" id="okBtn">知道了</div>\
+                        </div>';
+                    $("#tipMask").html(tipHtml);
+                    $("#tipMask").show();
+                } else if(regEx1.test(inp1[0].value) && (inp1[0].value != inp2[0].value)){
+                    // 提示页面
+                    var tipHtml = 
+                    '<div class="tips">\
+                            <p class="text">'+tips2+'</p>\
+                            <div class="okBtn" id="okBtn">知道了</div>\
+                        </div>';
+                    $("#tipMask").html(tipHtml);
+                    $("#tipMask").show();
+                }
+            }
+
+            // 校验-正则表达式
+            var regPassword = /^(\w){6,20}$/;
+
+            $("#login").off("click").on("click",function(){
+                // TODO
+                check($password,$rePassword,regPassword,regPassword,"亲！密码不符合规则哦~","亲！两次的密码不一样哦~");
+            });
+            
+            $(document).on('click','#okBtn',function(){
+                $("#tipMask").hide();
+            });
+
+            // 点击文字消失
+            var inpAnimation = (function() {
+                $("#password").focus(function(){  
+                    if(this.value == this.defaultValue) {  
+                        this.value='';  
+                    }  
+                });  
+                $("#password").blur(function(){  
+                    if(this.value == '') {  
+                        this.value=this.defaultValue;  
+                    }  
+                });  
+                $("#rePassword").focus(function(){  
+                    if(this.value == this.defaultValue) {  
+                        this.value='';  
+                    }  
+                });  
+                $("#rePassword").blur(function(){  
+                    if(this.value == '') {  
+                        this.value=this.defaultValue;  
+                    }  
+                });  
+            })();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">  
+	<meta http-equiv="x-rim-auto-match" content="none">  
+    <!--适配-->
+    <title>钱戏-后台配置</title>
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/config_dazhuanpan.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery-weui.min.css">
+</head>
+<body>
+    <!--游戏首页背景图-->
+    <div class="gamePoster">
+        <!--个人中心按钮-->
+        <div class="persCenter">
+            <p><span>个人</span><span>中心</span></p>
+        </div>
+    </div>
+    <!--活动名称-->
+    <div class="actName">
+        <div class="group-actName">
+            <sapn>活动名称:</sapn>
+            <input type="text">
+            <i class="icon"></i>
+        </div>
+    </div>
+    <!--活动时间-->
+    <div class="actTime">
+        <p>活动时间:</p>
+        <!--时间选择器-->
+        <div class="timePicker">
+            <input class="weui-input" id="startTime" type="text" value="" readonly="">
+            <p>至</p>
+            <input class="weui-input endCss" id="endTime" type="text" value="" readonly="">
+        </div>
+    </div>
+    <!--派奖设置-->
+    <div class="handOutAwards">
+        <p class="title">派奖设置:</p>
+        <ul>
+            <li>每人最多有 <input class="handOut_input" id="totalLotteryCount" type="text" value="3"> 次抽奖机会</li>
+            <li>每人每日有 <input class="handOut_input" id="dayLotteryCount" type="text" value="1"> 次抽奖机会</li>
+            <li>每人最多中奖 <input class="handOut_input" id="singleUserAwards" type="text" value="1"> 次</li>
+            <li>中奖概率 <input class="handOut_input" id="globalProbability" type="text" value="30"> %</li>
+        </ul>
+    </div>
+    <!--奖品添加-->
+    <div class="addAward">
+        <div class="itemArea">
+            <div class="item">
+                <p class="title">奖品一:</p>
+                <ul>
+                    <li>奖品名字 <input class="addAward_input" id="trophyName" type="text"></li>
+                    <li>奖品数量 <input class="addAward_input" id="awardRealNum" type="text"> 份</li>
+                </ul>
+                <ul class="awardPic">
+                    <li>奖品图片</li>
+                    <li>
+                        <div class="productPic">
+                            <span>删除</span>
+                        </div>
+                        <div class="detail">
+                            <span id="upPhoto">上传图片</span>
+                            <div class="tips">
+                                <p>请上传一张图片</p>
+                                <p> 建议尺寸200X200</p>
+                                <p>图片格式：.jpg.png</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="addPicBtn">
+            <p id="addAward">+添加奖品</p>
+        </div>
+    </div>
+    <!--活动规则说明-->
+    <div class="actRule">
+         <p class="title">活动规则说明:<span> (点击更改)</span></p>
+         <!--活动说明编辑-->
+         <textarea name="ruleTips" rows="5" id="ruleTips" placeholder="这里填写商家自定义的活动说明"></textarea>
+    </div>
+    <!--领奖信息-->
+    <div class="awardInfo">
+        <p class="title">领奖信息:</p>
+        <ul>
+            <li>领奖联系: <input class="awardInfo_input" id="trophyName" type="text"></li>
+            <li>领奖地址:<textarea class="awardInfo_area" name="ruleTips" rows="2" id="ruleTips" placeholder=""></textarea></li>
+            <li>兑奖须知:<textarea class="awardInfo_area" name="ruleTips" rows="2" id="ruleTips" placeholder=""></textarea></li>
+        </ul>
+    </div>
+    <!--保存活动-->
+    <div class="saveAct">
+        <p>保存活动</p>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/jquery-weui.min.js"></script>
+    <script> 
+        var content = {
+            // 当前页面奖品的数量
+            "awardCount": 1
+        };
+        $(document).ready(function(){
+            $("#startTime").datetimePicker({
+                title: '开始时间',
+                min: "2014-12-12",
+                max: "2022-12-12 12:12",
+                onChange: function (picker, values, displayValues) {
+                console.log(values);
+                }
+            });
+        });
+        $(document).ready(function(){
+            $("#endTime").datetimePicker({
+                title: '开始时间',
+                min: "2014-12-12",
+                max: "2022-12-12 12:12",
+                onChange: function (picker, values, displayValues) {
+                console.log(values);
+                }
+            });
+        });
+
+        // textarea默认文本
+        var placeholder = '1.活动开始之后可以自己砍一刀;\n2.分享给好友,让好友助力帮忙砍到更低的价格;\n3.再砍价的过程中若发现自己心仪的价格时能随时进行支付;\n4.砍到低价时,也可以进行买买买了;';
+        $('.actRule textarea').val(placeholder);
+        $('.actRule textarea').focus(function() {
+            if ($(this).val() == placeholder) {
+                $(this).val('');
+            }
+        });
+
+        $('.actRule textarea').blur(function() {
+            if ($(this).val() == '') {
+                $(this).val(placeholder);
+            }
+        });
+        
+        // 添加奖品按钮绑定的事件
+        var arr = ["零","一","二","三","四","五","六","七","八"];
+        $("#addAward").off("click").on("click",function(){
+            
+            if(content.awardCount<8){
+                content.awardCount++;
+                var html = 
+                '<div class="item" style="margin-top:1rem">\
+                    <p class="title"><span class="awardName">奖品'+arr[content.awardCount]+':</span><span id="delete">删除</span></p>\
+                    <ul>\
+                        <li>奖品名字 <input class="addAward_input" id="trophyName" type="text"></li>\
+                        <li>奖品数量 <input class="addAward_input" id="awardRealNum" type="text"> 份</li>\
+                    </ul>\
+                    <ul class="awardPic">\
+                        <li>奖品图片</li>\
+                        <li>\
+                            <div class="productPic">\
+                                <span>删除</span>\
+                            </div>\
+                            <div class="detail">\
+                                <span id="upPhoto">上传图片</span>\
+                                <div class="tips">\
+                                    <p>请上传一张图片</p>\
+                                    <p> 建议尺寸200X200</p>\
+                                    <p>图片格式：.jpg.png</p>\
+                                </div>\
+                            </div>\
+                        </li>\
+                    </ul>\
+                </div>';
+
+                $(".itemArea").append(html);
+
+                $(".itemArea .item").each(function(index,domEle){
+                    $(domEle).find("#delete").hide();
+                });
+                $(".itemArea .item").eq(-1).find("#delete").show();
+            }else {
+                alert("只能添加8个奖项");
+            }
+        });
+        // 绑定删除事件
+        $(document).on('click','#delete',function(){
+            $(this).parent().parent(".item").remove();
+            content.awardCount--;
+            $(".itemArea .item").eq(-1).find("#delete").show();
+        });
+    </script>
+</body>
+</html>
