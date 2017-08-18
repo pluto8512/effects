@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取图片信息</title>
+    <style>
+        .photos {
+            width: 3024px;
+            height: 4032px;
+            position: relative;
+        }
+        .photos img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .photos canvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="photos" class="photos">
+        <img src="./images/test.jpg">
+        <!--<img src="blob:http://127.0.0.1:8080/1c1acad1-bf17-4a28-a9f2-83837685c321">-->
+        <canvas id="myCanvas"></canvas>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/exif.js"></script>
+    <script>
+        var $_img = $("#photos img");
+        $_img.on("click",function () {
+            EXIF.getData(this, function(){
+                var _dataTxt = EXIF.pretty(this);
+                var _dataJson = JSON.stringify(EXIF.getAllTags(this));
+                var origin = EXIF.getTag(this, 'Orientation');
+
+                console.log(this);
+                console.log(_dataTxt);
+                console.log(_dataJson);
+                console.log(origin);
+            });
+        });
+
+        // 获取图片的拍摄方向
+        // tips 这个方法不稳定 而且处理的方法必须放到回调里面执行
+        function getOrientation(img) {
+            var Orientation = null;
+            EXIF.getData(img, function(){
+                Orientation = EXIF.getTag(this, 'Orientation');
+                // 调整图片方向
+                modulatePhoto(Orientation);
+            });
+        }
+//        getOrientation($_img.get(0));
+
+        var orient = null;
+        function getOrientation2(img) {
+            EXIF.getData(img, function(){
+                orient = EXIF.getTag(this, 'Orientation');
+            });
+        }
+        var timer = setInterval(function(){
+            if(orient){
+                console.log(orient);
+                modulatePhoto(orient);
+                clearInterval(timer);
+            }
+        },15);
+        getOrientation2($_img.get(0));
+        function modulatePhoto(Orientation) {
+            // 调整图片方向
+            image = new Image();
+            image.src = $_img[0].src;
+            image.onload = function() {
+                var canvas = document.getElementById("myCanvas");
+                var ctx = canvas.getContext('2d');
+                var expectWidth, expectHeight;
+                // *) 确定目标的宽和高
+                if ( Orientation == 6 || Orientation == 8 ) {
+                    expectWidth = image.height;
+                    expectHeight = image.width;
+                } else {
+                    expectWidth = image.width;
+                    expectHeight = image.height;
+                }
+
+                // *) 最大宽度限制及缩小变化
+                var MAX_WIDTH = 480;
+                if ( expectWidth > MAX_WIDTH ) {
+                    expectHeight = expectHeight * MAX_WIDTH / expectWidth;
+                    expectWidth = MAX_WIDTH;
+                }
+
+                if ( Orientation == 6 ) {
+                    // 顺时针90°
+                    ctx.save();
+                    ctx.translate(expectWidth/2, expectHeight/2);
+                    ctx.rotate(90 * Math.PI / 180.0);
+                    ctx.drawImage(image, -expectHeight/2, -expectWidth/2, expectHeight, expectWidth);
+                } else if ( Orientation == 8 ) {
+                    // 逆时针90°
+                    ctx.save();
+                    ctx.translate(expectWidth/2, expectHeight/2);
+                    ctx.rotate(270 * Math.PI / 180.0);
+                    ctx.drawImage(image, -expectHeight/2, -expectWidth/2, expectHeight, expectWidth);
+                    ctx.restore();
+                } else if ( Orientation == 3 ) {
+                    // 180°
+                    ctx.save();
+                    ctx.translate(expectWidth/2, expectHeight/2);
+                    ctx.rotate(Math.PI);
+                    ctx.drawImage(image, -expectWidth/2, -expectHeight/2, expectWidth, expectHeight);
+                    ctx.restore();
+                } else {
+                    ctx.drawImage(image, 0, 0, expectWidth, expectHeight);
+                }
+
+                // *) 获取旋转和压缩后的图片数据.
+                var imagedata = canvas.toDataURL("image/png");
+                $_img[0].src = imagedata;
+            }
+        }
+    </script>
+</body>
+</html>

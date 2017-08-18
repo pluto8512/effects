@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'/>
+    <title>模态框公用的结构</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'/>
+	<meta name="renderer" content="webkit">
+	<meta name='apple-mobile-web-app-capable' content='yes' />
+	<meta name='full-screen' content='true' />
+	<meta name='x5-fullscreen' content='true' />
+	<meta name='360-fullscreen' content='true' />
+	<meta name="laya" screenorientation ="landscape"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv='expires' content='0' />
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+<body>
+	<!-- hide:隐藏， SMB(small model box) BMB(big model box)-->
+	<!--黑色蒙层-->
+	<div class="modalBox_mask hide">
+		<span class="head">
+			<p class="p_center p_title">能量不足</p>
+		</span>
+    </div>
+    <!--小模态框基础结构 -->
+    <div class="SMB hide">
+    </div>
+	<!--带标题的小模态框 SMB_title1:分享成功 SMB_title2：领取成功-->
+	<div class="SMB hide">
+		<div class="SMB_title SMB_title1 "></div>
+    </div>
+	<div class="SMB hide">
+		<div class="SMB_title SMB_title2 "></div>
+    </div>
+	<!--带按钮的小模态框 SMB_btn1:去赚钱 SMB_btn2：确认领取 SMB_btn3: 确认-->
+	<div class="SMB hide">
+		<div class="SMB_btn SMB_btn1"></div>
+    </div>
+	<div class="SMB hide">
+		<div class="SMB_btn SMB_btn2"></div>
+    </div>
+	<div class="SMB hide">
+		<div class="SMB_btn SMB_btn3"></div>
+    </div>
+
+	<!--大模态框基础结构 -->
+    <div class="BMB hide">
+    </div>
+	<!--带左上角图标的大模态框 BMB_icon1:礼物图标 BMB_icon2:能量图标 BMB_icon3:秘籍图标-->
+	<div class="BMB hide">
+		<div class="BMB_icon BMB_icon1"></div>
+    </div>
+	<div class="BMB hide">
+		<div class="BMB_icon BMB_icon2"></div>
+    </div>
+	<div class="BMB hide">
+		<div class="BMB_icon BMB_icon3"></div>
+    </div>
+	<!--带标题的大模态框 BMB_title1:领奖励 BMB_title2:秘籍 BMB_title3:能量-->
+	<div class="BMB hide">
+		<div class="BMB_title BMB_title1"></div>
+    </div>
+	<div class="BMB hide">
+		<div class="BMB_title BMB_title2"></div>
+    </div>
+	<div class="BMB hide">
+		<div class="close"></div>
+		<div class="BMB_title BMB_title3"></div>
+    </div>
+	<!--带按钮的大模态框 BMB_btn1:立即领取 BMB_btn2：分享领能量 BMB_btn2_disable:不能BMB_btn2：分享领能量 BMB_btn3：去建岛 BMB_btn4:已领取-->
+	<div class="BMB hide">
+		<div class="BMB_btn BMB_btn4"></div>
+    </div>
+	<!--带副标题的模态框 BMB_subhead1:登录奖励 BMB_subhead2:签到奖励 BMB_subhead3:建岛完毕 BMB_subhead4:建岛奖励 BMB_subhead5:斩获大奖-->
+	<div class="BMB hide">
+		<div class="BMB_subhead BMB_subhead5"></div>
+	</div>
+	
+	<!--"领奖励-登录奖励" 编号:BMB_001 -->
+	<div class="BMB hide" id="BMB_001">
+		<span class="BMB_icon BMB_icon1"></span>
+		<span class="BMB_title BMB_title1"></span>
+		<span class="close"></span>
+		<span class="BMB_content1"></span>
+		<div class="box_text">
+			<p class="p_center">欢迎回家，主人又是元气满满的一天哦~</p>
+			<p class="p_center">为了早日建完岛屿，领取大奖</p>
+			<p class="p_center">特地为你准备了<span class="mark">30点能量</span></p>
+		</div>
+		<span class="BMB_subhead BMB_subhead1"></span>
+		<div class="BMB_btn BMB_btn1"></div>
+	</div>
+
+	<!--"领能量" 编号:BMB_002 -->
+	<div class="BMB hide" id="BMB_002">
+		<span class="BMB_icon BMB_icon2"></span>
+		<span class="BMB_title BMB_title3"></span>
+		<span class="close"></span>
+		<div class="BMB_content2_1">
+			<ul>
+				<li class="li_text">早上08:00-10:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon"></span><i>X3</i><span class="btn fr"></span></li>
+				<li class="li_text">中午12:00-14:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon"></span><i>X3</i><span class="btn fr"></span></li>
+				<li class="li_text">晚上17:00-19:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon"></span><i>X3</i><span class="btn fr"></span></li>
+			</ul>
+		</div>
+		<div class="wrap_gameRule">
+			<p class="small_text">【游戏规则】每人可领取3次免费能量，错过领取时间能量作废。</p>
+		</div>
+		<span class="BMB_subhead BMB_subhead2" style="top:2.76rem"></span>
+		<div class="BMB_btn BMB_btn2">
+			<span class="BMB_content2_5"></span>
+		</div>
+		<div class="wrap_shareRule">
+			<p class="small_text">【分享规则】分享成功即刻领取能量每人限领取一次。</p>
+		</div>
+	</div>
+
+	<!--"领奖励" 建岛进度 编号:BMB_0030-->
+	<div class="BMB hide" id="BMB_0030">
+		<span class="BMB_icon BMB_icon1"></span>
+		<span class="BMB_title BMB_title3"></span>
+		<span class="close"></span>
+		<div class="BMB_subhead BMB_subhead4"></div>
+		<div class="BMB_content3_1">
+			<div class="box_text">
+				<p class="p_center">【领奖规则】<span class="mark">在2017年7月1日~9月1日</span></p>
+				<p class="p_center">完成岛屿建设即可领奖，数量有限，先到先得</p>
+			</div>
+		</div>
+		<div class="BMB_content3_2">
+			<span class="img"></span>
+			<div class="wrap_text fr">
+				<p class="p_center">现金红包￥100元</p>
+				<p class="p_center">奖品剩余: <span class="mark">68份</span></p>
+				<p class="p_center">已有2718人领取</p>
+			</div>
+		</div>
+		<div class="BMB_content3_3">
+			<div class="progress"></div>
+			<p class="p_center">建岛进度:4/25</p>
+		</div>
+		<div class="BMB_btn BMB_btn3"></div>
+	</div>
+	<!--"领奖励" 恭喜主人建岛完毕 编号:BMB_0031-->
+	<div class="BMB hide" id="BMB_0031">
+		<span class="BMB_icon BMB_icon1"></span>
+		<span class="BMB_title BMB_title3"></span>
+		<span class="close"></span>
+		<div class="BMB_subhead BMB_subhead3"></div>
+		<div class="BMB_content3_2">
+			<span class="img"></span>
+			<div class="wrap_text fr">
+				<p class="p_center">现金红包￥100元</p>
+				<p class="p_center">奖品剩余: <span class="mark">68份</span></p>
+				<p class="p_center">已有2718人领取</p>
+			</div>
+		</div>
+		<div class="BMB_content3_3">
+			<div class="progress"></div>
+			<p class="p_center">建岛进度:4/25</p>
+		</div>
+		<div class="BMB_btn BMB_btn1"></div>
+	</div>
+	<!--"秘籍" 编号:BMB_004 -->
+	<div class="BMB hide" id="BMB_004">
+		<span class="BMB_icon BMB_icon3"></span>
+		<span class="BMB_title BMB_title2"></span>
+		<span class="close"></span>
+		<div class="wrap_text">
+			<p class="p_center align_l">【游戏玩法】</p>
+			<p class="p_center align_l">转动转盘获得金币，金币购买建岛建筑<br>升级岛屿。岛屿建设完后可获得奖励。</p>
+		</div>
+		<div class="wrap_text2">
+			<p class="p_center align_l">【领奖规则】</p>
+			<p class="p_center align_l">转动转盘获得金币，金币购买建岛建筑<br>升级岛屿。岛屿建设完后可获得奖励。</p>
+		</div>
+	</div>
+	<!--"领奖励" 斩获大奖 编号:BMB_005-->
+	<div class="BMB hide" id="BMB_005">
+		<span class="BMB_icon BMB_icon1"></span>
+		<span class="BMB_title BMB_title3"></span>
+		<span class="close"></span>
+		<div class="BMB_subhead BMB_subhead5"></div>
+		<div class="BMB_content3_2">
+			<span class="img"></span>
+			<div class="wrap_text fr">
+				<p class="p_center">现金红包￥100元</p>
+				<p class="p_center">【奖品详情】</span></p>
+				<p class="p_center">建设完岛屿即可领取100元,<br>奖品已经放在你的微信钱包<br>中。</p>
+			</div>
+		</div>
+		<div class="BMB_content3_3">
+			<div class="progress"></div>
+			<p class="p_center">建岛进度:25/25</p>
+		</div>
+		<div class="BMB_btn BMB_btn4"></div>
+	</div>
+	<!--"领奖励" 已领完 编号:BMB_006-->
+	<div class="BMB hide" id="BMB_006">
+		<span class="BMB_icon BMB_icon1"></span>
+		<span class="BMB_title BMB_title3"></span>
+		<span class="close"></span>
+		<div class="wrap_text2 fr">
+			<p class="p_center">双子岛奖品已领完，每建完一座岛</p>
+			<p class="p_center">即可前往下一座岛，同时领取相应的奖励</p>
+			<p class="p_center mark">白羊岛即将开放,敬请期待</p>
+		</div>
+		<div class="BMB_content3_2">
+			<span class="img"></span>
+			<div class="wrap_text fr">
+				<p class="p_center">现金红包￥100元</p>
+				<p class="p_center">奖品剩余: <span class="mark">68份</span></p>
+				<p class="p_center">已有2718人领取</p>
+			</div>
+		</div>
+		<div class="BMB_content3_3">
+			<div class="progress"></div>
+			<p class="p_center">建岛进度:4/25</p>
+		</div>
+		<div class="BMB_btn BMB_btn4"></div>
+	</div>
+	<!--建完岛，但是奖品已经领完 编号：BMB_007  -->
+	<div class="BMB hide" id="BMB_007">
+		<span class="BMB_icon BMB_icon1"></span>
+		<span class="BMB_title BMB_title3"></span>
+		<span class="close"></span>
+		<div class="wrap_text2 fr">
+			<p class="p_center">【领奖规则】</p>
+			<p class="p_center">2017年7月1日~2017年9月1日</p>
+			<p class="p_center mark">完成岛屿建设即可领奖</p>
+		</div>
+		<div class="BMB_content3_2">
+			<span class="img"></span>
+			<div class="wrap_text fr">
+				<p class="p_center textLeft">现金红包￥100元</p>
+				<p class="p_center textLeft">奖品已经被领完</p>
+				<p class="p_center textLeft">下一座岛奖励即将开放,赶<br>紧建完本岛前往下一座岛吧</p>
+			</div>
+		</div>
+		<div class="BMB_content3_3">
+			<div class="progress"></div>
+			<p class="p_center">建岛进度:25/25</p>
+		</div>
+		<div class="BMB_btn BMB_btn4"></div>
+	</div>
+
+	<!--"去赚钱" 编号:SMB_001-->
+	<div class="SMB hide" id="SMB_001">
+		<div class="SMB_content1">
+			<div class="box_text">
+				<p class="p_center">阿欧~金币不足</p>
+				<p class="p_center">转动转盘可获得大量金币</p>
+				<p class="p_center">是时候去赚点钱啦!</p>
+			</div>
+		</div>
+		<div class="SMB_btn SMB_btn1"></div>
+    </div>
+
+	<!--"分享成功" 编号:SMB_002-->
+	<div class="SMB hide" id="SMB_002">
+		<div class="SMB_title SMB_title1 "></div>
+		<div class="SMB_content2"></div>
+		<div class="SMB_btn SMB_btn2"></div>
+	</div>
+
+	<!--"领取成功" 编号:SMB_003-->
+	<div class="SMB hide" id="SMB_003">
+		<div class="SMB_title SMB_title2 "></div>
+		<div class="SMB_content3">
+			<div class="redBag"></div>
+			<div class="box_text">
+				<p class="p_center">红包已经发放成功,记得查看微信哦</p>
+			</div>
+		</div>
+		<div class="SMB_btn SMB_btn3"></div>
+	</div>
+
+	<!--"右上角分享"  -->
+	<div class="rtShare hide" id="rtShare">
+		<div class="img">
+			<div class="box_text">
+				<p class="p_center">点这,</p>
+				<p class="p_center">将<span class="mark">6点能量</span>收入囊中</p>
+			</div>
+		</div>
+	</div>
+
+
+    <!--js begin! -->
+    <script src="./js/lib/jquery-2.2.4.min.js"></script>
+    <script> 
+		(function(doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function() {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					if (clientWidth > 800) clientWidth = 800;
+					docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+				};
+
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			recalc();
+		})(document, window);
+    </script>
+    <script src="./js/common.js"></script>
+</body>
+</html>

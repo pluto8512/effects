@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--适配-->
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #container{
+            height: 100%;
+            width: 100%
+        }
+        .info {
+            color: pink;
+            font-size: 0.5rem;
+        }
+        .info_img {
+            width: 1rem;
+            height: 1rem;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM">
+    </script>
+</head>
+<link rel="stylesheet" href="./common/common.css">
+<body>
+<div id="container"></div>
+<script src="./common/jquery.js"></script>
+<script src="./common/common.js"></script>
+<script>
+    // 创建地图实例
+    var map = new BMap.Map("container");
+    // 创建点坐标
+    var point = new BMap.Point(114.07, 22.62);
+    // 地图初始化
+    map.centerAndZoom(point, 15);
+    // 地图平移缩放控件
+    map.addControl(new BMap.NavigationControl());
+
+    // ===自定义标注vvv
+
+    // 创建自定义图标对象
+    function addMarker(point,index){
+        var myIcon = new BMap.Icon("./images/userDefineMark.jpg", new BMap.Size(50,50),{
+            // 指定定位的位置，当标注显示在地图上时，其所指向的位置距离图片左上角的位置偏移量
+            anchor: new BMap.Size(25,50),
+            // 设置偏移，精灵图的做法
+            imageOffset: new BMap.Size(0, 0 )
+        });
+        // 创建标注对象并且添加到地图
+        var marker = new BMap.Marker(point,{icon:myIcon});
+        addActionlistener(marker,function() {
+            marker.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
+        });
+        map.addOverlay(marker);
+    }
+
+    // 随机向地图添加10个标注
+    var bounds = map.getBounds();
+    var lngSpan = bounds.ul.lng - bounds.Ll.lng;
+    var latSpan = bounds.ul.lat - bounds.Ll.lat;
+
+    for (var i = 0; i < 10; i ++) {
+        var point = new BMap.Point(bounds.Ll.lng + lngSpan * (Math.random() * 0.7 + 0.15),
+            bounds.Ll.lat + latSpan * (Math.random() * 0.7 + 0.15));
+        addMarker(point, i);
+    }
+
+    // ===给图标添加事件监听vvv
+
+    function addActionlistener(marker,callback) {
+        marker.addEventListener("click", function(){
+            callback();
+        });
+    }
+
+    // ===信息窗口vvv >>>'可以显示HTML内容'
+
+    var opts = {
+        width : 250,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title : "Hello"  // 信息窗口标题
+    }
+    var infoWindow = new BMap.InfoWindow("<p class='info'>Hellow World!</p><img class='info_img' src='./images/userDefineMark.jpg'>", opts);  // 创建信息窗口对象
+</script>
+</body>
+</html>
