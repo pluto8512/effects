@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=8898cdd145bf84a47f434280bd146d70"></script>
+    <title>地图红包后台</title>
+    <link rel="stylesheet" href="./common/common.css">
+    <style>
+        input {
+            padding-left: 10px;
+        }
+        .MarkPositionPop {
+            width: 718px;
+            height: 630px;
+            margin: 0 auto;
+            border: solid 2px #7A7A7A;
+            position: relative;
+        }
+        .title {
+            width: 712px;
+            height: 43px;
+            background: #19AEFF;
+            text-align: left;
+            color: #ffffff;
+            font-size: 17px;
+            line-height: 43px;
+            padding-left: 6px;
+        }
+        .title p {
+            display: inline-block;
+        }
+        .title span {
+            float: right;
+            color: #ffffff;
+            font-size: 17px;
+            line-height: 43px;
+            margin-right: 27px;
+        }
+        .wrap_content {
+            width: 718px;
+            height: 458px;
+            border-bottom: solid 1px black;
+            overflow-y: scroll;
+        }
+        .footer {
+            width: 712px;
+            height: 43px;
+            background: #F5F5F5;
+            text-align: left;
+            color: #ffffff;
+            font-size: 17px;
+            line-height: 43px;
+            padding-left: 6px;
+            position: absolute;
+            bottom: 0;
+        }
+        .save {
+            width: 96px;
+            height: 27px;
+            background: #6EB7E0;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -48px;
+            margin-top: -13.5px;
+            text-align: center;
+            line-height: 27px;
+            font-style: 12px;
+            -webkit-border-radius: 3.5px;
+            -moz-border-radius: 3.5px;
+            border-radius: 3.5px;
+        }
+        .wrap_operation {
+            height: 66px;
+            width: 158px;
+            float: right;
+            margin-top: 10px;
+            margin-right: 26px;
+        }
+        .add {
+            width: 66px;
+            height: 66px;
+            background: #F2F2F2;
+            float: left;
+            text-align: center;
+            line-height: 66px;
+            font-size: 40px;
+        }
+        .subtract {
+            width: 66px;
+            height: 66px;
+            background: #F2F2F2;
+            float: right;
+            text-align: center;
+            line-height: 66px;
+            font-size: 40px;
+        }
+        .item {
+            height: 510px;
+            font-size: 16px;
+            border-bottom: solid 1px black;
+            overflow: hidden;
+        }
+        .box_lfet {
+            height: 100%;
+            width: 70px;
+            float: left;
+            padding-left: 6px;
+            padding-top: 30px;
+        }
+        .box_right {
+            height: 100%;
+            width: 609px;
+            float: right;
+            padding-top: 10px;
+            padding-right: 16px;
+        }
+        .wrap_photo {
+            width: 80px;
+            height: 80px;
+            background: #E8E8E8;
+            display: inline-block;
+        }
+        .wrap_upPhoto {
+            position: relative;
+        }
+        .wrap_upPhoto p {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            margin-top: -22px;
+            margin-left: 16px;
+        }
+        .box_right .text , .search{
+            display: inline-block;
+        }
+        .box_right input{
+            height: 30px;
+            width: 148px;
+            border: solid 1px black;
+            vertical-align: top;
+        }
+        .box_right span {
+            color: red;
+            margin-left: 10px;
+        }
+        .box_right .search {
+            height: 30px;
+            width: 70px;
+            background: #6EB7E0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 17px;
+            line-height: 30px;
+        }
+        .box_right .wrap_map {
+            margin-top: 16px;
+        }
+        .box_right .space {
+            margin: 16px 0;
+        }
+        .box_right .map {
+            width: 450px;
+            height: 230px;
+            background: skyblue;
+        }
+        .box_right .limit {
+            margin-top: 16px;
+        }
+        .box_right .limit p {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="MarkPositionPop">
+        <div class="title">
+            <p>选择推广区域</p>
+            <span>X</span>
+        </div>
+        <div class="wrap_content">
+            <div class="item">
+                <div class="box_lfet">店铺：</div>
+                <div class="box_right">
+                    <div class="wrap_upPhoto">
+                        <div class="wrap_photo"></div>&nbsp;
+                        <p>上传店铺logo</p>
+                    </div>
+                    <div class="wrap_map">
+                        <p class="text">选择店铺的位置：</p>
+                        <input type="text" id="address"><span>*</span>
+                        <div class="search" id="search">定位</div>
+                        <p class="space">输入地址后，点击“定位”按钮可以在地图上定位。（如果输入的地址无法定位，请在地图上直接点击选择地点）</p>
+                        <div class="map" id="map"></div>
+                    </div>
+                    <div class="limit">
+                        <p>限制用户参与范围：</p>
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_operation">
+            <div class="add" id="add">+</div>
+            <div class="subtract" id="subtract">-</div>
+        </div>
+        <div class="footer">
+            <div class="save">保存</div>
+        </div>
+    </div>
+    <script >
+
+    </script>
+    <script src="./common/jquery.js"></script>
+    <script>
+        var count = 1;
+        var index = new LastInFirstOut();
+        var lng = "113.960774";
+        //是否从未保存过定位信息，如果从未保存过，并且有填地址信息，那么进入页面后自动定位
+        var located = true;
+        //定位坐标
+        var destPoint = new BMap.Point(113.960774 , 22.541384);
+        //百度地图处理
+        var address = "迈科龙大厦";
+        var map = new BMap.Map("map");
+        map.centerAndZoom(new BMap.Point(destPoint.lng, destPoint.lat), 20);//初始化地图
+        map.enableScrollWheelZoom();
+        map.addControl(new BMap.NavigationControl());
+        var marker = new BMap.Marker(destPoint);
+        map.addOverlay(marker);//添加标注
+
+        function callback(posi){
+            $("#search").removeAttr("disabled");
+            for(var i=0;i<posi.length;i++){
+                if(i==0){
+                    destPoint = posi[0].point;
+                }
+                posi[i].marker.addEventListener("click", function(data){
+                    destPoint = data.target.getPosition(0);
+                });
+            }
+        }
+
+        // 输入框进行搜索
+        $("#search").click(function(){
+            if($("#address").val() == ""){
+                alert("请输入门店地址！");
+                return ;
+            }
+            $("#search").attr("disabled","disabled");
+            local = new BMap.LocalSearch(map, { //智能搜索
+                renderOptions:{map: map}
+            });
+            located = true;
+            local.setMarkersSetCallback(callback);
+            local.search($("#address").val());
+            return false;
+        });
+        $("#address").keyup(function(event){
+            if(event.which == 13){
+                $("#search").click();
+            }
+        });
+
+        // 地图上面添加标记，确定位置
+        map.addEventListener("click", function(e){
+            if(confirm("确认选择这个位置？")){
+                destPoint = e.point;
+                map.clearOverlays();
+                var marker1 = new BMap.Marker(destPoint);  // 创建标注
+                map.addOverlay(marker1);
+            }
+        });
+
+        // 点击标记
+//        function addEventListener(marker){
+//            marker.addEventListener("click", function(data){
+//                alert("marker click");
+//                destPoint = data.target.getPosition(0);
+//            });
+//        }
+
+        // ===门店操作的功能vvv
+
+        /**
+         * 添加门店
+         */
+        $("#add").on("click",function (e) {
+            addItem();
+        });
+        function addItem() {
+            var html_item = "<div class=\"item\">" +
+                "                <div class=\"box_lfet\">店铺：</div>" +
+                "                <div class=\"box_right\">" +
+                "                    <div class=\"wrap_upPhoto\">" +
+                "                        <div class=\"wrap_photo\"></div>&nbsp;" +
+                "                        <p>上传店铺logo</p>" +
+                "                    </div>" +
+                "                    <div class=\"wrap_map\">" +
+                "                        <p class=\"text\">选择店铺的位置：</p>" +
+                "                        <input type=\"text\" id=\"address\"><span>*</span>" +
+                "                        <div class=\"search\" id=\"search\">定位</div>" +
+                "                        <p class=\"space\">输入地址后，点击“定位”按钮可以在地图上定位。（如果输入的地址无法定位，请在地图上直接点击选择地点）</p>" +
+                "                        <div class=\"map\" id=\"map\"></div>" +
+                "                    </div>" +
+                "                    <div class=\"limit\">" +
+                "                        <p>限制用户参与范围：</p>" +
+                "                        <input type=\"text\">" +
+                "                    </div>" +
+                "                </div>" +
+                "            </div>";
+            $(".wrap_content").append(html_item);
+            index.push(count++);
+            console.log(index.items);
+        }
+
+
+        /**
+         * 移除门店
+         */
+        $("#subtract").on("click",function (e) {
+            removeItem();
+        });
+        function removeItem() {
+            $(".wrap_content .item:nth-child("+index.size()+")").remove();
+            count--;
+            index.pop();
+            console.log(index.items);
+        }
+
+        /**
+         * Last In First Out
+         */
+        function LastInFirstOut() {
+            // 用数组来模拟栈
+            this.items = [0];
+        };
+        /**
+         * 将元素送入栈
+         * @param {Any} element
+         */
+        LastInFirstOut.prototype.push = function(element) {
+            this.items.push(element);
+        };
+        /**
+         * 弹出栈顶的元素
+         */
+        LastInFirstOut.prototype.pop = function() {
+            return this.items.pop();
+        };
+        /**
+         * 查看栈顶的元素
+         */
+        LastInFirstOut.prototype.peek = function() {
+            return this.items[this.items.length-1];
+        };
+        /**
+         * 确定栈是否为空
+         */
+        LastInFirstOut.prototype.isAmpty = function() {
+            return this.items.length === 0;
+        };
+        /**
+         * 清空栈中所有的内容
+         */
+        LastInFirstOut.prototype.clear = function() {
+            this.items = [];
+        };
+        /**
+         * 返回栈的长度
+         */
+        LastInFirstOut.prototype.size = function() {
+            return this.items.length;
+        };
+        /**
+         * 以字符串的形式返回栈中所有的内容
+         */
+        LastInFirstOut.prototype.print = function() {
+            console.log(this.items.toString());
+        };
+    </script>
+</body>
+</html>

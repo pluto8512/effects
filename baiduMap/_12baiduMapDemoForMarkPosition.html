@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="http://static.resource.weijuju.com/bootstrap/css/bootstrap.min.css?v=20170803" />
+    <link rel="stylesheet" href="http://static.resource.weijuju.com/bootstrap/css/style.css?v=20170803" />
+
+    <link rel="stylesheet" href="http://static.resource.weijuju.com/css/admin/admin.css?v=20170803" />
+    <link rel="stylesheet" href="http://static.resource.weijuju.com/css/plugin/om-fileupload.css?v=20170803" />
+    <script type="text/javascript" src="http://static.resource.weijuju.com/js/jquery-1.7.2.min.js?v=20170803"></script>
+    <script type="text/javascript" src="http://static.resource.weijuju.com/js/plugin/PCASClass.js?v=20170803"></script>
+    <script type="text/javascript" src="http://static.resource.weijuju.com/js/plugin/category.js?v=20170803"></script>
+    <script type="text/javascript" src="http://static.resource.weijuju.com/js/plugin/operamasks-ui.min.js?v=20170803"></script>
+    <script type="text/javascript" src="http://static.resource.weijuju.com/js/page/html-helper.js?v=20170803"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=8898cdd145bf84a47f434280bd146d70"></script>
+    <title>LBS-详细设置</title>
+</head>
+<style>
+    body{
+        padding: 0 20px;
+    }
+    #map{
+        width: 580px;
+        height: 300px;
+        margin-top: 10px;
+        margin-left: 100px;
+    }
+    .cover-area{
+        background-color: #fff;
+        border: 1px solid #d3d3d3;
+        color: #666;
+        max-width: 580px;
+        padding: 2px 8px;
+        width: 480px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        position: relative;
+    }
+    .cover-hd {
+        padding: 2px 8px 3px;
+        position: relative;
+    }
+    img{
+        max-width:none;
+    }
+    .upload-tip {
+        color: #666;
+        font-size: 12px;
+        line-height: 28px;
+        text-align: right;
+        position: absolute;
+        top: 3px;
+        right: 8px;
+    }
+    .cover-bd {
+        border-top: 1px solid #ccc;
+        font-size: 0;
+        overflow: hidden;
+        padding: 8px;
+    }
+    .cover-bd img {
+        width: 100px;
+    }
+    .cover-del {
+        font-size: 14px;
+        margin-left: 5px;
+    }
+    #detail{
+        width: 485px;
+        height: 150px;
+    }
+    select{
+        width: 152px;
+    }
+</style>
+
+<body>
+<h3>商家LBS设置</h3>
+<div class="alert alert-info">
+    <p><span class="bold">说明：</span>开启LBS功能后用户可在微信上发送地理位置获取商家的地理位置信息。</p>
+</div>
+<form class="form-horizontal" id="lbsForm" action="#">
+    <div class="control-group">
+        <label class="control-label" for="keyword">商家名称</label>
+        <div class="controls">
+            <input type="text" name="name" class="span4" id="name" value="小迈科技"/>
+            <span class="maroon">*</span>
+            <span class="help-inline">最多只能输入30个字符。</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="location_p">商家所在地区</label>
+        <div class="controls">
+            <select name="location_p" id="location_p"></select><select name="location_c" id="location_c"></select><select name="location_a" id="location_a"></select>
+        </div>
+    </div>
+    <script type="text/javascript">
+        new PCAS("location_p","location_c","location_a",'广东省','深圳市','福田区');
+    </script>
+
+    <div class="control-group">
+        <label class="control-label" for="category_f">商家类别</label>
+        <div class="controls">
+            <select name="category_f" id="category_f"></select><select name="category_s" id="category_s"></select>
+        </div>
+    </div>
+    <script type="text/javascript">
+        new CS("category_f","category_s",'生活服务','其他');
+    </script>
+    <div class="control-group">
+        <label class="control-label" for="address">地址:</label>
+        <div class="controls">
+            <input type="text" id="address" name="address" value="迈科龙大厦" class="span5"/>
+            <button id="locate-btn" class="btn btn-primary">定位</button>
+            <span class="maroon">*</span><br/>
+            <span class="help-inline">输入地址后，点击“自动定位”按钮可以在地图上定位。</span><br />
+            <span class="help-inline">（如果输入地址后无法定位，请在地图上直接点击选择地点）</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div id="map">
+
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="">商家展示图片:</label>
+        <div class="controls">
+            <div class="cover-area">
+                <div class="cover-hd">
+                    <input id="file_upload_img" name="file_upload_img" class="file_upload" type="file" />
+                    <input id="img" class="cover-input" value="47b290fa-0fda-4c52-926e-c1b278cc78a3.png" name="img" type="hidden" />
+                </div>
+                <p id="upload-tip" class="upload-tip">建议尺寸：700像素 * 380像素</p>
+                <p class="img-area cover-bd" style=''>
+                    <img class="img" src="http://imgcdn.weijuju.com/3/lbs/47b290fa-0fda-4c52-926e-c1b278cc78a3.png"/>
+                    <a href="javascript:;" class="vb cover-del" id="delImg">删除</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="detail">门店简介:</label>
+        <div class="controls">
+            <textarea id="detail" name="detail">嗯</textarea>
+            <span class="maroon">*</span><br/><span class="help-inline">最多为1000个字符。</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+
+            <button id="save-btn" type="submit" class="btn btn-primary btn-large">保存</button>
+
+            <a id="close-btn" href="javascript:;" class="btn btn-warning btn-large">停用</a>
+
+
+        </div>
+    </div>
+</form>
+</body>
+<script type="text/javascript">
+    var lng = "113.960774";
+
+    //是否从未保存过定位信息，如果从未保存过，并且有填地址信息，那么进入页面后自动定位
+    var located = true;
+    //定位坐标
+    var destPoint = new BMap.Point(113.960774 , 22.541384);
+    $(function(){
+        $('input.file_upload').each(function(){
+            var $fileInput = $(this);
+            $fileInput.omFileUpload({
+                action : '/uploadlbsimage',
+                fileExt : '*.jpg;*.png;*.gif;*.jpeg;*.bmp',
+                fileDesc : 'Image Files',
+                sizeLimit : 100 * 1024,
+                onError:function(ID,fileObj,errorObj,event){
+                    if(errorObj.type == "File Size"){
+                        alert("上传图片的大小不能超过100KB");
+                    }
+                },
+                onSelect:function(ID,fileObj,event){
+                    setTimeout(function(){
+                        $fileInput.omFileUpload({'actionData':{'uid':'3'}});
+                        $fileInput.omFileUpload('upload');
+                    },10);
+                },
+                swf : '../../swf/om-fileupload.swf',
+                method:'GET',
+                onComplete : function(ID,fileObj,response,data,event){
+                    var jsonData = eval("("+response+")");
+                    var $cont =  $(this).closest(".cover-area");
+                    $(".img-area",$cont).show().find(".img").attr("src",jsonData.fileUrl);
+                    $(".cover-input",$cont).val(jsonData.fileName.substring(jsonData.fileName.indexOf("/")+1));
+                    $cont.parent().next().find("input").removeAttr("disabled");
+                }
+            });
+        });
+        $(".cover-del").click(function(){
+            var $cont =  $(this).closest(".cover-area");
+            $(".img-area",$cont).hide();
+            $(".cover-input",$cont).val("");
+        });
+        $.validator.addMethod("selectCheck", function(value) {
+            return value!="";
+        }, '请具体选择');
+        $("#lbsForm").validate({
+            rules: {
+                name: {required: true,maxlength: 30},
+                address: {required: true,maxlength: 100},
+                detail : {required: true,maxlength: 1000},
+                category_f : {selectCheck:true},
+                category_s : {selectCheck:true}
+            },
+            messages: {
+                name: {required: "请输商家名称！",maxlength: "商家名称不能超过30个字符！"},
+                address: {required: "请输入商家地址！",maxlength: "商家地址不能超过100个字符！"},
+                detail : {required:"请输入商家的简单介绍！",maxlength: "商家介绍不可以超过1000个字符！"}
+            },
+            showErrors: function(errorMap, errorList) {
+                if (errorList && errorList.length > 0) {
+                    $.each(errorList,
+                        function(index, obj) {
+                            var item = $(obj.element);
+                            if(item.is(".cover")){
+                                alert(obj.message);
+                            }
+                            // 给输入框添加出错样式
+                            item.closest(".control-group").addClass('error');
+                            item.attr("title",obj.message);
+                        });
+                } else {
+                    var item = $(this.currentElements);
+                    item.closest(".control-group").removeClass('error');
+                    item.removeAttr("title");
+                }
+            },
+            submitHandler: function() {
+                if($("#img").val() == ""){
+                    alert("请上传商家展示图片！");
+                    return false;
+                }
+                var $form = $("#lbsForm");
+                var $btn = $("#save-btn");
+                if($btn.hasClass("disabled")) return;
+                //服务个数
+                var submitData = {
+                    name: $.htmlFilter($("input[name='name']", $form).val()),
+                    address: $("input[name='address']", $form).val(),
+                    location_p:$("#location_p", $form).val(),
+                    location_c:$("#location_c", $form).val(),
+                    location_a:$("#location_a", $form).val(),
+                    category_f:$("#category_f", $form).val(),
+                    category_s:$("#category_s", $form).val(),
+                    wuid:69108,
+                    detail : $("#detail", $form).val(),
+                    img: $("#img", $form).val(),
+                    longitude : destPoint.lng,
+                    latitude : destPoint.lat,
+                    action: "save"
+                };
+
+                submitData.lid = 14431;
+
+                $btn.addClass("disabled");
+                $.post("/admin/lbsinfo", submitData,function(data){
+                    if (data.success == true) {
+                        alert("保存成功");
+
+                        window.location.reload();
+
+                    }else{
+                        $btn.removeClass("disabled");
+                        alert("保存失败");
+                    }
+                },"json");
+                return false;
+            }
+        });
+        /**开始处理百度地图**/
+        var address = "迈科龙大厦";
+        var map = new BMap.Map("map");
+        map.centerAndZoom(new BMap.Point(destPoint.lng, destPoint.lat), 20);//初始化地图
+        map.enableScrollWheelZoom();
+        map.addControl(new BMap.NavigationControl());
+        var marker = new BMap.Marker(destPoint);
+        map.addOverlay(marker);//添加标注
+
+        map.addEventListener("click", function(e){
+            if(confirm("确认选择这个位置？")){
+                destPoint = e.point;
+                map.clearOverlays();
+                var marker1 = new BMap.Marker(destPoint);  // 创建标注
+                map.addOverlay(marker1);
+            }
+        });
+
+        var ac = new BMap.Autocomplete(//建立一个自动完成的对象
+            {"input" : "address"
+                ,"location" : map
+            });
+        ac.addEventListener("onhighlight", function(e) {
+            ac.setInputValue(e.toitem.value.business);
+        });
+        var myValue;
+        ac.addEventListener("onconfirm", function(e) {//鼠标点击下拉列表后的事件
+            var _value = e.item.value;
+            myValue = _value.business;
+            ac.setInputValue(myValue);
+            setPlace();
+        });
+        ac.setInputValue(address);
+        var local;
+        function setPlace(){
+            map.clearOverlays();    //清除地图上所有覆盖物
+            local = new BMap.LocalSearch(map, { //智能搜索
+                renderOptions:{map: map}
+            });
+            located = true;
+            local.setMarkersSetCallback(callback);
+            local.search(myValue);
+        }
+
+        function addEventListener(marker){
+            marker.addEventListener("click", function(data){
+                alert("marker click");
+                destPoint = data.target.getPosition(0);
+            });
+        }
+        function callback(posi){
+            $("#locate-btn").removeAttr("disabled");
+            for(var i=0;i<posi.length;i++){
+                if(i==0){
+                    destPoint = posi[0].point;
+                }
+                posi[i].marker.addEventListener("click", function(data){
+                    destPoint = data.target.getPosition(0);
+                });
+            }
+        }
+        $("#address").keyup(function(event){
+            if(event.which == 13){
+                $("#locate-btn").click();
+            }
+        });
+        $("#locate-btn").click(function(){
+            if($("#address").val() == ""){
+                alert("请输入门店地址！");
+                return ;
+            }
+            $("#locate-btn").attr("disabled","disabled");
+            local = new BMap.LocalSearch(map, { //智能搜索
+                renderOptions:{map: map}
+            });
+            located = true;
+            local.setMarkersSetCallback(callback);
+            local.search($("#address").val());
+            return false;
+        });
+        /**结束百度地图处理**/
+        $("#close-btn").click(function(){
+            if(confirm("你确定要停用LBS功能？")){
+                var submitData = {
+                    "action":"close",
+                    "wuid":69108,
+                    "lid":14431
+                };
+                $.post("/admin/lbsinfo",submitData,function(data){
+                    if(data.success){
+                        window.location.reload();
+                    } else{
+                        alert("停用失败");
+                    }
+                },"json");
+            }
+        });
+        $("#open-btn").click(function(){
+            if(confirm("你确定要启用LBS功能？")){
+                var submitData = {
+                    "action":"open",
+                    "wuid":69108,
+                    "lid":14431
+                };
+                $.post("/admin/lbsinfo",submitData,function(data){
+                    if(data.success){
+                        window.location.reload();
+                    } else{
+                        alert("启用失败");
+                    }
+                },"json");
+            }
+        });
+    });
+</script>
+</html>

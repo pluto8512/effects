@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--适配-->
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #container{
+            height: 100%;
+            width: 100%
+        }
+        .info {
+            color: pink;
+            font-size: 0.5rem;
+        }
+        .info_img {
+            width: 1rem;
+            height: 1rem;
+        }
+        .userDefine {
+            border: 0.025rem solid black;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM"></script>
+    <script type="text/javascript" src="./lib/LuShu.js"></script>
+</head>
+<link rel="stylesheet" href="./common/common.css">
+<body>
+<div id="container"></div>
+<script src="./common/jquery.js"></script>
+<script src="./common/common.js"></script>
+<script>
+    // 创建地图实例
+    var map = new BMap.Map("container");
+    // 创建点坐标
+    var point = new BMap.Point(113.869393,22.582002);
+    // 地图初始化
+    map.centerAndZoom(point, 15);
+    // 地图平移缩放控件
+    map.addControl(new BMap.NavigationControl());
+    var marker = new BMap.Marker(point);// 创建标注，标注的默认样式是红色的点
+    map.addOverlay(marker);
+
+    // ===工具APIvvv
+
+   // 路书
+
+</script>
+</body>
+</html>
