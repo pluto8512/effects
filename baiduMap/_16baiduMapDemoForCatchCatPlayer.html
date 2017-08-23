@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--适配-->
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #container{
+            height: 100%;
+            width: 100%
+        }
+        /*覆盖物的样式*/
+        .overlayPlayer {
+            width: 4.575rem;
+            height: 4.6rem;
+            position: absolute;
+        }
+        .headImg {
+            width: 2.5rem;
+            height: 2.5rem;
+            -webkit-border-radius: 1.25rem;
+            -moz-border-radius: 1.25rem;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -1.25rem;
+            margin-left: -1.25rem;
+        }
+        .headImg img{
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        .playerOfmap {
+            width: 4.575rem;
+            height: 4.6rem;
+            background: url("./images/direction.png") no-repeat;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM">
+    </script>
+</head>
+<link rel="stylesheet" href="./common/common.css">
+<body>
+<div id="container"></div>
+<script src="./common/jquery.js"></script>
+<script src="./common/common.js"></script>
+<script>
+    // 玩家配置
+    var playerConfig = {
+        "lng":114.07,
+        "lat":22.62
+    };
+    // 创建地图实例
+    var map = new BMap.Map("container");
+    // 创建点坐标
+    var point = new BMap.Point(playerConfig.lng, playerConfig.lat+0.001);
+    // 创建玩家的坐标
+    var playerPoint = new BMap.Point(playerConfig.lng, playerConfig.lat);
+    // 地图初始化
+    map.centerAndZoom(point, 18);
+    // panTo()方法将让地图平滑移动至新中心点
+    window.setTimeout(function(){
+        map.panTo(point);
+    }, 3000);
+
+    //玩家头像地址
+    var imgUrl = "./images/direction.png";
+
+    /**===============================================================================================================================================================*/
+    //自定义覆盖物
+    function UserDefineOverlay(pointPlayer) {
+        this._pointPlayer = pointPlayer;
+        this._width = 0;
+        this._height = 0;
+    }
+    //重写
+    UserDefineOverlay.prototype = new BMap.Overlay();
+    //初始化
+    UserDefineOverlay.prototype.initialize = function(map){
+        //保存map
+        this._map = map;
+        //创建
+        var div = document.createElement("div");
+        var html =
+            "<div class='headImg'>" +
+                "<img src='./images/userDefineMark.jpg'>" +
+            "</div>";
+        $(div).append(html);
+        $(div).addClass('playerOfmap');
+        //添加
+        map.getPanes().markerPane.appendChild(div);
+        //保存div
+        this._div = div;
+        return div;
+    }
+    //绘制
+    UserDefineOverlay.prototype.draw = function(){
+        var position = this._map.pointToOverlayPixel(this._pointPlayer);
+        this._div.style.left = position.x - $(".playerOfmap").outerWidth() / 2 + "px";
+        this._div.style.top = position.y - $(".playerOfmap").outerHeight() / 2 + "px";
+    }
+    /**==============================================================================================================================================================*/
+
+    /**==============================================================================================================================================================*/
+    // 画圆
+    var circle = new BMap.Circle(playerPoint, 120, {
+        fillColor: "#89DEFA",
+        strokeWeight: 0.1,
+        fillOpacity: 0.3,
+        strokeOpacity: 0.1
+    });
+    map.addOverlay(circle);
+    /**==============================================================================================================================================================*/
+
+    //搜索
+    var local = new BMap.LocalSearch(map, {
+        renderOptions: {
+            map: map,
+            autoViewport: false
+        }
+    });
+    //地理区域
+    var bounds = circle.getBounds();
+    //local.searchInBounds("餐馆",bounds);
+
+    //添加玩家
+    var player = new UserDefineOverlay(playerPoint);
+    map.addOverlay(player);
+</script>
+</body>
+</html>

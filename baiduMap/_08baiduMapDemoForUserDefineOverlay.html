@@ -26,6 +26,9 @@
         }
         .userDefine {
             border: 0.025rem solid black;
+            width: 100px;
+            height: 100px;
+            background: red;
         }
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM">
@@ -116,12 +119,12 @@
         // 创建div元素，作为自定义覆盖物的容器
         var div = document.createElement("div");
         $(div).addClass('userDefine');
-        $(div).html()
+        $(div).html();
         div.style.position = "absolute";
         // 可以根据参数设置元素外观
-        div.style.width = this._length + "px";
-        div.style.height = this._length + "px";
-        div.style.background = this._color;
+//        div.style.width = this._length + "px";
+//        div.style.height = this._length + "px";
+//        div.style.background = this._color;
         // 将div添加到覆盖物容器中>>>'markerPane:文本标注层'
         map.getPanes().markerPane.appendChild(div);
         // 保存div实例
@@ -134,7 +137,7 @@
     SquareOverlay.prototype.draw = function(){
         // 根据地理坐标转换为像素坐标，并设置给容器 >>>'pointToOverlayPixel方法可以将地理坐标转换到覆盖物的所需要的像素坐标'
         var position = this._map.pointToOverlayPixel(this._center);
-        this._div.style.left = position.x - this._length / 2 + "px";
+        this._div.style.left = position.x - this._length / 2  + "px";
         this._div.style.top = position.y - this._length / 2 + "px";
     }
 
@@ -159,7 +162,7 @@
     }
 
     // 添加自定义覆盖物
-    var mySquare = new SquareOverlay(map.getCenter(), 100, "red");
+    var mySquare = new SquareOverlay(new BMap.Point(114.07, 22.62), 100, "red");
     map.addOverlay(mySquare);
 
 
