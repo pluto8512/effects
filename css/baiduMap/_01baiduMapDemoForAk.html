@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #container{height:100%}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM">
+        //v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
+        //v1.4版本及以前版本的引用方式：src="http://api.map.baidu.com/api?v=1.4&key=您的密钥&callback=initialize"
+    </script>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        // 创建地图实例
+        var map = new BMap.Map("container");
+        // 创建点坐标
+        var point = new BMap.Point(114.07, 22.62);
+        // 地图初始化
+        map.centerAndZoom(point, 15);
+        // panTo()方法将让地图平滑移动至新中心点
+        window.setTimeout(function(){
+            map.panTo(new BMap.Point(114.07, 22.62));
+        }, 3000);
+    </script>
+</body>
+</html>

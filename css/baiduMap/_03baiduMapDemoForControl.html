@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--适配-->
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #container{
+            height: 100%;
+            width: 100%
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM">
+    </script>
+</head>
+<link rel="stylesheet" href="./common/common.css">
+<body>
+<div id="container"></div>
+<script>
+    // 创建地图实例
+    var map = new BMap.Map("container");
+    // 创建点坐标
+    var point = new BMap.Point(114.07, 22.62);
+    // 地图初始化
+    map.centerAndZoom(point, 15);
+    // panTo()方法将让地图平滑移动至新中心点
+    window.setTimeout(function(){
+        map.panTo(new BMap.Point(114.07, 22.62));
+    }, 3000);
+
+    // ======控件
+    map.addControl(new BMap.NavigationControl()); //地图平移缩放控件
+    map.addControl(new BMap.ScaleControl()); //比例尺控件
+    map.addControl(new BMap.OverviewMapControl()); //缩略地图控件
+    map.addControl(new BMap.MapTypeControl()); //地图类型控件
+    map.setCurrentCity("深圳"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+
+</script>
+<script src="./common/jquery.js"></script>
+<script src="./common/common.js"></script>
+</body>
+</html>

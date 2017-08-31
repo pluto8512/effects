@@ -1,0 +1,449 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors xiaodong (tumi330@163.com)
+ * @date    2017-8-27
+ * @version $0.1$
+ */
+/* CSS Document RESET*/
+body,div,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,iframe,input,textarea,select,label,article,aside,footer,header,menu,nav,section,time,audio,video{margin:0;padding:0;}
+article,aside,footer,header,hgroup,nav,section,audio,canvas,video{display:block;}
+body{font-size:100%;font-family:'微软雅黑',Helvetica,STHeiti,Droid Sans Fallback;font-size:30px; color:#333; -webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+textarea{resize:none;}
+iframe,img{border:0;}
+ul,ol{list-style:none;}
+input,select,textarea{outline:0;-webkit-user-modify:read-write-plaintext-only;}
+input{-webkit-appearance:none;}
+a{text-decoration:none;}
+ 
+html,body{width: 100%; height: 100%;position: relative; overflow: hidden}
+#container{ width:100%; height: 100%;position:relative}
+
+@function torem($px){
+    @return $px / 40 * 1rem;
+}
+
+$fontUrl: "../images/";
+$tipBg: $fontUrl + "tipBg.png";
+$award: $fontUrl + "award.png";
+$wallet: $fontUrl + "wallet.png";
+$cry: $fontUrl + "cry.png";
+$yun: $fontUrl + "yun.png";
+$happy: $fontUrl + "happy.png";
+$popBg1: $fontUrl + "popBg1.png";
+$btn01: $fontUrl + "btn01.png";
+$btn02: $fontUrl + "btn02.png";
+$btn03: $fontUrl + "btn03.png";
+$btn04: $fontUrl + "btn04.png";
+$btn05: $fontUrl + "btn05.png";
+$btn06: $fontUrl + "btn06.png";
+$btn07: $fontUrl + "btn07.png";
+$popBg2: $fontUrl + "popBg2.png";
+
+.hide {
+    display: none;
+}
+
+.game_tips {
+    width: torem(492);
+    height: torem(163);   
+    position: absolute;
+    left: 50%;
+    margin-left: torem(-246);
+    top: torem(25);
+    background: url($tipBg) no-repeat;
+    background-size: 100% 100%;
+    .text {
+        width: torem(260);
+        height: torem(94);
+        position: absolute;
+        top: torem(36);
+        left: torem(184);
+        font-size: torem(16);
+        line-height: torem(30);
+        letter-spacing: torem(4);
+        color: #ffffff;
+        padding: 0 torem(8) torem(5) torem(16);
+        overflow-y: scroll;
+    }
+}
+.award_btn {
+    width: torem(80);
+    height: torem(80);
+    position: absolute;
+    background: url($award) no-repeat;
+    background-size: 100% 100%; 
+    top: torem(214);
+    right: torem(10);
+}
+.wallet_btn {
+    width: torem(80);
+    height: torem(80);
+    position: absolute;
+    background: url($wallet) no-repeat;
+    background-size: 100% 100%; 
+    top: torem(324);
+    right: torem(10);
+}
+.anchorBL {
+    display: none;
+}
+.mask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.pop_cry {
+    width: torem(564);
+    height: torem(594);
+    background: url($popBg1) no-repeat;
+    background-size: 100% 100%;
+    position: absolute; 
+    top: 15%;
+    left: 50%;
+    margin-left: torem(-282);
+    .wawa {
+        width: torem(307);
+        height: torem(228);
+        background: url($cry) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-153.5);
+        top: torem(-40);  
+    }
+    .text {
+        height: torem(234);
+        width: torem(564);
+        position: absolute;
+        top: torem(173);
+        left: 0;
+        font-size: torem(44);
+        color: #6966EB;
+        text-align: center;
+        padding-top: torem(73);
+    }
+    .btn01 {
+        width: torem(226);
+        height: torem(72);
+        background: url($btn01) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-113);
+        bottom: torem(86);
+    }
+    .text2 {
+        font-size: torem(22);
+        color: #FCEC35;
+        width: torem(564);
+        text-align: center;
+        position: absolute;
+        bottom: torem(30);
+        letter-spacing: torem(1);
+    }
+    .close {
+        width: torem(70);
+        height: torem(70);
+        background: url($btn07) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-35);
+        bottom: torem(-80);
+    }
+}
+
+.pop_yun {
+    width: torem(564);
+    height: torem(594);
+    background: url($popBg1) no-repeat;
+    background-size: 100% 100%;
+    position: absolute; 
+    top: 15%;
+    left: 50%;
+    margin-left: torem(-282);
+    .wawa {
+        width: torem(307);
+        height: torem(228);
+        background: url($yun) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-153.5);
+        top: torem(-40);  
+    }
+    .text {
+        height: torem(234);
+        width: torem(564);
+        position: absolute;
+        top: torem(173);
+        left: 0;
+        font-size: torem(30 );
+        color: #6966EB;
+        text-align: center;
+        padding-top: torem(45);
+    }
+    .btn06 {
+        width: torem(258);
+        height: torem(72);
+        background: url($btn06) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-129);
+        bottom: torem(86);
+    }
+    .text2 {
+        font-size: torem(22);
+        color: #FCEC35;
+        width: torem(564);
+        text-align: center;
+        position: absolute;
+        bottom: torem(30);
+        letter-spacing: torem(1);
+    }
+    .close {
+        width: torem(70);
+        height: torem(70);
+        background: url($btn07) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-35);
+        bottom: torem(-80);
+    }
+}
+.pop_happy {
+    width: torem(564);
+    height: torem(594);
+    background: url($popBg1) no-repeat;
+    background-size: 100% 100%;
+    position: absolute; 
+    top: 15%;
+    left: 50%;
+    margin-left: torem(-282);
+    .wawa {
+        width: torem(307);
+        height: torem(228);
+        background: url($happy) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-153.5);
+        top: torem(-40);  
+    }
+    .text {
+        height: torem(234);
+        width: torem(564);
+        position: absolute;
+        top: torem(173);
+        left: 0;
+        font-size: torem(26);
+        color: #6966EB;
+        text-align: center;
+        padding-top: torem(30);
+        span {
+            font-size: torem(30); 
+            display: inline-block;
+            margin-top: torem(20);
+        }
+    }
+    .btn06 {
+        width: torem(258);
+        height: torem(72);
+        background: url($btn06) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-129);
+        bottom: torem(86);
+    }
+    .text2 {
+        font-size: torem(22);
+        color: #FCEC35;
+        width: torem(564);
+        text-align: center;
+        position: absolute;
+        bottom: torem(30);
+        letter-spacing: torem(1);
+    }
+    .close {
+        width: torem(70);
+        height: torem(70);
+        background: url($btn07) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-35);
+        bottom: torem(-80);
+    }
+}
+.pop_happy2 {
+    width: torem(564);
+    height: torem(594);
+    background: url($popBg1) no-repeat;
+    background-size: 100% 100%;
+    position: absolute; 
+    top: 15%;
+    left: 50%;
+    margin-left: torem(-282);
+    .wawa {
+        width: torem(307);
+        height: torem(228);
+        background: url($happy) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-153.5);
+        top: torem(-40);  
+    }
+    .text {
+        height: torem(234);
+        width: torem(564);
+        position: absolute;
+        top: torem(173);
+        left: 0;
+        font-size: torem(26);
+        color: #6966EB;
+        text-align: center;
+        padding-top: torem(30);
+        span {
+            font-size: torem(20); 
+        }
+    }
+    .btn06 {
+        width: torem(258);
+        height: torem(72);
+        background: url($btn06) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-129);
+        bottom: torem(86);
+    }
+    .text2 {
+        font-size: torem(22);
+        color: #FCEC35;
+        width: torem(564);
+        text-align: center;
+        position: absolute;
+        bottom: torem(30);
+        letter-spacing: torem(1);
+    }
+    .close {
+        width: torem(70);
+        height: torem(70);
+        background: url($btn07) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-35);
+        bottom: torem(-80);
+    }
+}
+.award {
+    width: torem(564);
+    height: torem(685);
+    background: url($popBg2) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: torem(-282);
+    top: 15%;
+    .text1 {
+        width: torem(564);
+        font-size: torem(30);
+        color: #fff;
+        text-align: center;
+        letter-spacing: torem(2);
+        margin-top: torem(5);
+    }
+    .text2 {
+        font-size: torem(30);
+        color: #fff;
+        text-align: center;
+        margin-top: torem(55);
+        letter-spacing: torem(2);
+    }
+    .list {
+        width: 100%;
+        position: relative;
+        .title {
+            width: torem(448);
+            height: torem(133);
+            margin-top: torem(63);
+            position: relative;
+            border-bottom: solid torem(1) rgba(90,130,241,0.3);
+            left: 50%;
+            margin-left: torem(-224);
+            .awardCenter{
+                width: torem(190);
+                height: torem(61);
+                background: url($btn03) no-repeat;
+                background-size: 100% 100%;
+                position: absolute;
+                top: torem(37);
+                // left: torem(54);    
+            }
+            .myAward{
+                width: torem(190);
+                height: torem(61);
+                background: url($btn04) no-repeat;
+                background-size: 100% 100%;
+                position: absolute;
+                top: torem(37);
+                right: torem(0); 
+            }
+        }
+        .content {
+            position: relative;
+            .awardCenterTab {
+
+            }
+            .myAwardTab {
+
+            }
+        }
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    animation-duration: 2s;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInDown {
+  animation-name:fadeInDown;
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.fadeOutUp {
+  animation-name: fadeOutUp;
+}

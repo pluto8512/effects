@@ -26,9 +26,6 @@
         }
         .userDefine {
             border: 0.025rem solid black;
-            width: 100px;
-            height: 100px;
-            background: red;
         }
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM">
@@ -95,76 +92,23 @@
     }
     var infoWindow = new BMap.InfoWindow("<p class='info'>Hellow World!</p><img class='info_img' src='./images/userDefineMark.jpg'>", opts);  // 创建信息窗口对象
 
-    // ===自定义覆盖物vvv
+    // ===图层vvv
 
-    /**
-     * 自定义覆盖物的够造函数
-     * @param center
-     * @param length
-     * @param color
-     * @constructor
-     */
-    function SquareOverlay(center, length, color) {
-        this._center = center;
-        this._length = length;
-        this._color = color;
-    }
-    // 继承API的BMap.Overlay
-    SquareOverlay.prototype = new BMap.Overlay();
+    // 添加图层
+    var traffic = new BMap.TrafficLayer();        // 创建交通流量图层实例
+    map.addTileLayer(traffic);                    // 将图层添加到地图上
 
-    // 重写覆盖物的初始化方法vvv >>>'我们自定义的方形覆盖物可以添加到任意图层上'
-    SquareOverlay.prototype.initialize = function(map){
-        // 保存map对象实例
-        this._map = map;
-        // 创建div元素，作为自定义覆盖物的容器
-        var div = document.createElement("div");
-        $(div).addClass('userDefine');
-        $(div).html();
-        div.style.position = "absolute";
-        // 可以根据参数设置元素外观
-//        div.style.width = this._length + "px";
-//        div.style.height = this._length + "px";
-//        div.style.background = this._color;
-        // 将div添加到覆盖物容器中>>>'markerPane:文本标注层'
-        map.getPanes().markerPane.appendChild(div);
-        // 保存div实例
-        this._div = div;
-        // 需要将div元素作为方法的返回值，当调用该覆盖物的show、hide方法，或者对覆盖物进行移除时，API都将操作此元素。
-        return div;
-    }
+    // 点击移除图层
+    map.addEventListener("click",function(){
+        map.removeTileLayer(traffic);
+    });
 
-    // 绘制覆盖物vvv
-    SquareOverlay.prototype.draw = function(){
-        // 根据地理坐标转换为像素坐标，并设置给容器 >>>'pointToOverlayPixel方法可以将地理坐标转换到覆盖物的所需要的像素坐标'
-        var position = this._map.pointToOverlayPixel(this._center);
-        this._div.style.left = position.x - this._length / 2  + "px";
-        this._div.style.top = position.y - this._length / 2 + "px";
-    }
-
-    // 移除覆盖物 >>>'调用map.removeOverlay或者map.clearOverlays方法时，API会自动将initialize方法返回的DOM元素进行移除'
-    // ...
-
-    // 显示和隐藏覆盖物vvv >>>'元素较为复杂，也可以自己实现show和hide方法'
-    SquareOverlay.prototype.show = function(){
-        if (this._div){
-            this._div.style.display = "";
-        }
-    }
-    SquareOverlay.prototype.hide = function(){
-        if (this._div){
-            this._div.style.display = "none";
-        }
-    }
-
-    // 添加自定义方法vvv
-    SquareOverlay.prototype.toggle = function(){
-        //TODO
-    }
-
-    // 添加自定义覆盖物
-    var mySquare = new SquareOverlay(new BMap.Point(114.07, 22.62), 100, "red");
-    map.addOverlay(mySquare);
-
+    // 添加自定义图层
+    var tilelayer = new BMap.TileLayer();         // 创建地图层实例
+    tilelayer.getTilesUrl=function(){             // 设置图块路径
+        return "./images/userDefineMark.jpg";
+    };
+    map.addTileLayer(tilelayer);                // 将图层添加到地图上
 
 </script>
 </body>

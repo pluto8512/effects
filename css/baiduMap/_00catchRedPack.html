@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--适配-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM">
+    </script>
+    <script src="./js/jweixin-1.0.0.js"></script>
+</head>
+<link rel="stylesheet" href="./common/common.css">
+<link rel="stylesheet" href="./css/game.css">
+<body>
+    <!--地图容器 BEGIN-->
+    <div id="container"></div>
+    <!--地图容器 END-->
+
+    <!--弹窗 BEGIN-->
+    <div class="game_tips" id="_gameTips">  
+        <div class="text">
+            已经为你规划最佳寻宝路线，越靠近这里红包数额越大，中奖概率越高
+        </div>
+    </div>
+    <div class="award_btn" id="_awardBtn">     
+    </div>
+    <div class="wallet_btn" id="_walletBtn">     
+    </div>
+
+    <div class="mask hide">
+        <div class="pop_cry hide">
+            <div class="wawa"></div>
+            <div class="text">
+                阿欧~没抓到</br>淘气的小龙溜走了
+            </div>
+            <div class="btn01"></div>
+            <div class="text2">好东西就要跟朋友分享 --></div>
+            <div class="close"></div>
+        </div>
+        <div class="pop_yun hide">   
+            <div class="wawa"></div>
+            <div class="text">
+                慢人一步</br>这个宝箱的奖品被洗劫一空！</br>爱笑的人运气不会差，</br>还有更多的奖励等你领取哦~
+            </div>
+            <div class="btn06"></div>
+            <div class="text2">好东西就要跟朋友分享 --></div>
+            <div class="close"></div>
+        </div>
+        <div class="pop_happy hide">   
+            <div class="wawa"></div>
+            <div class="text">
+                运气爆棚</br>获得有娱南山店派发的红包</br>还有更多更大的红包奖励哦~</br>赶紧去吧</br><span style="color:red;">￥2.89</span>
+            </div>
+            <div class="btn06"></div>
+            <div class="text2">好东西就要跟朋友分享 --></div>
+            <div class="close"></div>
+        </div>
+        <div class="pop_happy2 hide">   
+            <div class="wawa"></div>
+            <div class="text">
+                恭喜你</br>获得有娱游戏代金券100元1张</br><span>(在有娱任意门店、满200即可使用)</span>
+            </div>
+            <div class="btn06"></div>
+            <div class="text2">好东西就要跟朋友分享 --></div>
+            <div class="close"></div>
+        </div>
+        <div class="award hide">
+            <div class="text1">夺宝秘籍</div>
+            <div class="text2">越靠近<span style="color:#FFAE8C;">有娱商城</span>,红包金额越大,</br>奖品越多, 中奖概率也越高！</div>
+            <div class="list">
+                <div class="title">
+                    <div class="awardCenter"></div>
+                    <div class="myAward"></div>
+                </div>
+                <div class="content">
+                    <div class="awardCenterTab">
+                        <div class="item">
+                            <img src="./images/lotteryTicket.jpg" alt="奖券">
+                            <div class="text">
+                                <p>一等奖</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="myAwardTab"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!--弹窗 END-->
+
+<script src="./common/jquery.js"></script>
+<script src="./common/common.js"></script>
+<script src="./common/jquery.template.js"></script>
+<script src="./js/game.js"></script>
+<script src="./js/POP.js"></script>
+</body>
+</html>
