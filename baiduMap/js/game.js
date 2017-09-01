@@ -144,48 +144,55 @@ function setMarker(){
     isInit = false;
 }
 // 6*.随机添加小精灵方法扩展(首屛添加小精灵，保存到cookie)
-var initMarkArr = [];
 function setMarkerExtend(){
-    var bounds = map.getBounds();
-    var lngSpan = bounds.ul.lng - bounds.Ll.lng;
-    var latSpan = bounds.ul.lat - bounds.Ll.lat;
 
-    var unitlngs = lngSpan/10;
-    var unitlats = latSpan/10;
+    // var firstScreenMarkerParams = new Array();
+    // var firstScreenMarker = new Array();
+    // var bounds = map.getBounds();
+    // var lngSpan = bounds.ul.lng - bounds.Ll.lng;
+    // var latSpan = bounds.ul.lat - bounds.Ll.lat;
 
-    for(var i=0; i<=10; i++){
-        for(var j=0; j<=10; j++){
-            var point =  new BMap.Point(bounds.ul.lat + i*unitlats, bounds.ul.lng + j*unitlngs);
-            var distance =  (map.getDistance(pointA,pointB)).toFixed(2);
-            var initMark = {
-                "POINT":point,
-                "DISTANCE":distance
-            };
-            initPointArr.push(initMark);
-        }
-    }
+    // var unitlngs = lngSpan/10;
+    // var unitlats = latSpan/10;
 
-    // 排序
+    // var marker = new BMap.Marker( new BMap.Point(bounds.Ll.lng + 1*unitlngs,bounds.Ll.lat + 1*unitlats));// 创建标注，标注的默认样式是红色的点
+    // map.addOverlay(marker);
 
-    for (var i = 0; i < 5; i++) {
-        //标记
-        var t = i + 1;
-        var icon = new BMap.Icon("./images/0"+t+".png",new BMap.Size(82,82),{
-            // 指定定位的位置，当标注显示在地图上时，其所指向的位置距离图片左上角的位置偏移量
-            anchor: new BMap.Size(41,82),
-            imageOffset: new BMap.Size(0, 0 )// 设置偏移，精灵图的做法
-        });
-        // 创建标注对象并且添加到地图上
-        marker[i] = new BMap.Marker(markerArr[i],{icon:icon});
-        (function(i){
-            BMapLib.EventWrapper.addListener( marker[i], 'click', function(e){
-                catchSprite(markerArr[i]);
-            });
-        })(i);
-        map.addOverlay(marker[i]);
-    }
+    // for(var i=0; i<10; i++){
+    //     for(var j=0; j<10; j++){
+    //         var point =  new BMap.Point(bounds.Ll.lng + i*unitlngs,bounds.Ll.lat + j*unitlats);
+    //         var distance =  (map.getDistance(store.point,point)).toFixed(4);
+    //         var initMark = {
+    //             "POINT":point,
+    //             "DISTANCE":distance
+    //         };
+    //         firstScreenMarkerParams.push(initMark);
+    //     }
+    // }
 
-    isInit = false;
+    // // 排序
+    // var firstScreenMarkerParams = GAMECOMMON.maopao(firstScreenMarkerParams,"DISTANCE");
+
+    // for (var i = 0; i < 20; i++){
+    //     var t = Math.floor(Math.random()*5 + 1);
+    //     var icon = new BMap.Icon("./images/0"+t+".png",new BMap.Size(82,82),{
+    //         // 指定定位的位置，当标注显示在地图上时，其所指向的位置距离图片左上角的位置偏移量
+    //         anchor: new BMap.Size(41,82),
+    //         imageOffset: new BMap.Size(0, 0 )// 设置偏移，精灵图的做法
+    //     });
+    //     firstScreenMarker[i] = new BMap.Marker(firstScreenMarkerParams[i]["POINT"],{icon:icon});
+    //     //创建标注并添加地图上
+    //     // if(i <= 5){
+    //     //     firstScreenMarker[i] = new BMap.Marker(firstScreenMarkerParams[i]["POINT"],{icon:icon});
+    //     // }else{
+    //     //     firstScreenMarker[i] = new BMap.Marker(
+    //     //         firstScreenMarkerParams[Math.floor(Math.random()*(firstScreenMarkerParams.length-5))+5+1]["POINT"]
+    //     //         ,{icon:icon});
+    //     // }   
+    //     map.addOverlay(firstScreenMarker[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    // }
+
+    // isInit = false;
 }
 
 // 7.捕捉小精灵
@@ -322,7 +329,66 @@ setTimeout(function(){
             });
         });
     });
-},3999);
+},3990);
 setTimeout(foo,4000);// 地图的移动必须要在地图加好以后
 
 map.addOverlay(storeMarker1);
+setTimeout(setMarkerExtend,2800);
+
+
+// *.other
+function radnomLatLon(wlat,wlon,wRadius){// 小精灵的随机位置
+    var randomAngle=Math.floor(Math.random()*360);
+  
+    //经度上，1度等于111km
+    var du=Math.PI/360;
+    var sindis=(wRadius*Math.sin(du*randomAngle))/111000;
+    var cosdis=(wRadius*Math.cos(du*randomAngle))/111000;
+    
+    var randfuhaoLat=Math.floor(Math.random()*2);
+    var randfuhaoLon=Math.floor(Math.random()*2);
+  
+    var vLon=new Array(cosdis,-cosdis); //经度
+    var vLat=new Array(sindis,-sindis); //纬度
+  
+    var nowLon=wlon+vLon[randfuhaoLon];
+    var nowLat=wlat+vLat[randfuhaoLat];
+    var nowPos=new Array(nowLat,nowLon);
+    return nowPos;
+}
+/**
+ * 首屛添加坐标
+ * @param {店铺坐标} point1 
+ * @param {用户坐标} point2 
+ */
+function addMarkBasis(point1,point2){// 以随机角度和半径为基础在点周围的圆周上添加小精灵
+    // 1.算出用户和商家的距离
+    var distance =  (map.getDistance(point1,point2)).toFixed(2);
+    // 2.将距离分成十份
+    var unitDistance = distance/10;
+    // 3.添加标记
+    for(var i = 0 ; i < 20; i++){
+        var tmplDistance = i*unitDistance; 
+        markerArr.push(radnomLatLon(store.lat,store.long,tmplDistance));
+    }
+    // 4.标记添加到地图
+    for (var i = 0; i < 20; i++){
+        var t = Math.floor(Math.random()*5 + 1);
+        var icon = new BMap.Icon("./images/0"+t+".png",new BMap.Size(82,82),{
+            // 指定定位的位置，当标注显示在地图上时，其所指向的位置距离图片左上角的位置偏移量
+            anchor: new BMap.Size(41,82),
+            imageOffset: new BMap.Size(0, 0 )// 设置偏移，精灵图的做法
+        });
+        firstScreenMarker[i] = new BMap.Marker( [i]["POINT"],{icon:icon});
+        //创建标注并添加地图上
+        // if(i <= 5){
+        //     firstScreenMarker[i] = new BMap.Marker(firstScreenMarkerParams[i]["POINT"],{icon:icon});
+        // }else{
+        //     firstScreenMarker[i] = new BMap.Marker(
+        //         firstScreenMarkerParams[Math.floor(Math.random()*(firstScreenMarkerParams.length-5))+5+1]["POINT"]
+        //         ,{icon:icon});
+        // }   
+        map.addOverlay(firstScreenMarker[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    }
+
+}  

@@ -128,7 +128,24 @@ var GAMECOMMON = {
             default:
                 break;
         }
-    }
+    },
+    "maopao":function (arra,params){
+        
+            var temp;
+    
+            for(var i=0;i<arra.length;i++){ //比较多少趟，从第一趟开始
+    
+                for(var j=0;j<arra.length-i-1;j++){ //每一趟比较多少次数
+    
+                    if(arra[j][params] > arra[j+1][params]){
+                        temp=arra[j+1];
+                        arra[j+1]=arra[j];
+                        arra[j]=temp;
+                    }
+                }
+            };
+        return arra;
+        }
 };
 $.fn.extend({
     animateCss: function (animationName,callback) {

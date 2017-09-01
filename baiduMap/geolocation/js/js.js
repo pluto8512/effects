@@ -172,7 +172,7 @@ function radnomLatLon(wlat,wlon,wRadius){
 function setMarker(){
   for(var i=0;i<5;i++){
     var t=i+1;
-    var randRadius=Math.floor(Math.random()*rangeRadius*3*t);
+    var randRadius=1000;
     markerArr.push(radnomLatLon(lat,long,randRadius));
   }
 
