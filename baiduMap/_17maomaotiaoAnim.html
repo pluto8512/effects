@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--适配-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--适配-->
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #container{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .animate{
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            z-index: 99;
+            top: 0;
+            left: 0;
+        }
+        .animate .sprite{
+            width: 7.575rem;
+            height: 9.35rem;
+            position: absolute;
+            left: 50%;
+            margin-left: -3.7875rem;
+            top: 50%;
+            margin-top: -4.675rem;
+        }
+        .animate .sprite1{
+            width: 10.3rem;
+            height: 11.45rem;
+            position: absolute;
+            left: 50%;
+            margin-left: -6.15rem;
+            top: 50%;
+            margin-top: -6.8rem;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zr0syBW4bR9VCB1KzDLGqDy55GQer4KM">
+    </script>
+</head>
+<link rel="stylesheet" href="./common/common.css">
+<body>
+<div id="container"></div>
+<div class="animate">
+    <img class="sprite1" src="./images/fuzhu.png">
+    <img class="sprite" src="./images/maomaotiao.gif">
+   
+</div>
+<script>
+    // 创建地图实例
+    var map = new BMap.Map("container");
+    // 创建点坐标
+    var point = new BMap.Point(114.07, 22.62);
+    // 地图初始化
+    map.centerAndZoom(point, 15);
+    // panTo()方法将让地图平滑移动至新中心点
+    window.setTimeout(function(){
+        map.panTo(new BMap.Point(114.07, 22.62));
+    }, 3000);
+</script>
+<script src="./common/jquery.js"></script>
+<script src="./common/common.js"></script>
+<script>
+    $(".animate .sprite").on("click",function(){
+        $(this).animate({
+            opacity:0.8
+        },15,function(){
+            $(".animate .sprite1").attr("src","./images/maomaotiao1.gif");
+            $(".animate .sprite1").css("opacity",0.8);
+            $(this).attr("src","./images/fuzhu.png");
+            $(".animate .sprite1").animate({
+                opacity:1
+            },15);
+        });
+    });
+
+</script>
+</body>
+</html>

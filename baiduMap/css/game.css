@@ -452,10 +452,10 @@ html, body {
       height: 100%; }
 
 .circleOfmap {
-  width: 11.25rem;
-  height: 11.25rem;
-  border-radius: 5.625rem;
-  -webkit-border-radius: 5.625rem;
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 6.25rem;
+  -webkit-border-radius: 6.25rem;
   overflow: hidden;
   position: absolute;
   background: #6C52EB;
