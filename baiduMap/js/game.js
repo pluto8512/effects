@@ -41,24 +41,6 @@ var DATA = {
 
 
 // 1.地图信息初始化
-// var originLat = 113.960836;
-// var originLong = 22.541311;
-// var lat = 113.960836;
-// var long = 22.541311;
-// var storeLat = 113.960836;
-// var storelong = long+0.0013;
-
-// var testImg = "./images/userDefineMark.jpg";
-
-// var isInit = true;// 是否初始化
-
-// var store = {
-//     "lat":113.960836,
-//     "long":22.549611,
-//     "imgUrl":"./images/userDefineMark.jpg",
-//     "point":new BMap.Point(113.960836, 22.549611)
-// };
-
 var userPoint = new BMap.Point(DATA.player.lat, DATA.player.long); //用户坐标点
 var centerPoint = new BMap.Point(DATA.mapCenter.lat, DATA.mapCenter.long); //地图中心坐标点
 var storePoint = new BMap.Point(DATA.store.lat, DATA.store.long); //店铺坐标点
@@ -76,7 +58,6 @@ map.disablePinchToZoom();
 
 var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
 walking.search(userPoint, storePoint );
-
 
 // 2.地图信息-通过微信JSSDK, 获取用户火星坐标
 function wxLocation() {
@@ -302,7 +283,7 @@ function setMarkerExtend(){
     }
 
     for (var i = 0; i < DATA.finallyMark.length; i++){
-        marker[i] = new BMap.Marker(DATA.finallyMark[i],{icon:iconArr[Math.floor((DATA.mark.kinds-1)*Math.random()+1)]});
+        marker[i] = new BMap.Marker(DATA.finallyMark[i],{icon:iconArr[Math.floor((DATA.mark.kinds-1)*Math.random())]});
         (function(i){
             BMapLib.EventWrapper.addListener( marker[i], 'click', function(e){
                 catchSprite(DATA.finallyMark[i]);
@@ -397,7 +378,7 @@ function addLostSprite(i) {
 
     DATA.finallyMark[i] = point;
 
-    marker[i] = new BMap.Marker(DATA.finallyMark[i],{icon:iconArr[Math.floor((DATA.mark.kinds-1)*Math.random()+1)]});
+    marker[i] = new BMap.Marker(DATA.finallyMark[i],{icon:iconArr[Math.floor((DATA.mark.kinds-1)*Math.random())]});
     (function(i){
         BMapLib.EventWrapper.addListener( marker[i], 'click', function(e){
             catchSprite(DATA.finallyMark[i]);
@@ -497,6 +478,7 @@ setTimeout(function(){
 },4000); //地图的移动必须要在地图加好以后
 
 map.addOverlay(storeMarker);
+//添加標記
 setTimeout(setMarkerExtend,2800);
 
 

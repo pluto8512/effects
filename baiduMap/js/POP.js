@@ -5,24 +5,23 @@
  * @version $0.1$
  */
 var GAMECOMMON = {
-    "pop":function(type) {
+    "pop":function(type,callback) {
        switch (type) {
            case "pop_cry":
                var html = '\
-                   <div class="pop_cry">\
+                   <div class="pop_cry hide">\
                         <div class="wawa"></div>\
                         <div class="text">\
                             阿欧~没抓到</br>淘气的小龙溜走了\
                         </div>\
                         <div class="btn01"></div>\
                         <div class="text2">好东西就要跟朋友分享 --></div>\
-                        <div class="close" id="pop_cry_close"></div>\
                     </div>\ ';
                     GAMECOMMON.popshow("fade",html,"pop_cry");
                break;
            case "pop_yun":
                 var html = 
-                    '<div class="pop_yun">'+ 
+                    '<div class="pop_yun hide">'+ 
                         '<div class="wawa"></div>'+
                         '<div class="text">'+
                             '慢人一步</br>这个宝箱的奖品被洗劫一空！</br>爱笑的人运气不会差，</br>还有更多的奖励等你领取哦~'+
@@ -84,43 +83,66 @@ var GAMECOMMON = {
                     '</div>'
                   GAMECOMMON.popshow("fade",html,"award");
              break;
+            case "getAward":
+                var html = 
+                "<div class='getAward hide'>\
+                    <div class='title'>恭喜你！</div>\
+                    <div class='text'>\
+                        成功集齐*块拼图可立即兑换奖品<br>\
+                        先到先得，否则会被人领走哦~\
+                    </div>\
+                    <div class='pic'>\
+                        <div class='contain'>\
+                            <div class='contain_block'>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class='btn'></div>\
+                    <div class='footer'>\
+                        立即召唤好友，增加开启宝箱机会\
+                    </div>\
+                </div>";
+                GAMECOMMON.popshow("fade",html,"getAward");
+                break;
            default:
                var html = 
-               '<div class="commonPop">'+
+               '<div class="commonPop hide">'+
                     '<div class="title">提示</div>'+
                     '<div class="content">网络不给力哦~</div>'+
                     '<div class="footer" id="commonPop_close">'+
                         '确定'+
                     '</div>'+
                 '</div>';
-                GAMECOMMON.popshow("flipX",html,"commonPop");
+                GAMECOMMON.popshow("fade",html,"commonPop");
                break;
        } 
     },
     "popshow":function(type,html,className) {
         switch (type) {
             case "fade":
-               if($('.mask').find('className').length === 0){
-                    $('.mask').append(html);
+               if($('.mask_lbs').find('className').length === 0){
+                    $('.mask_lbs').append(html);
                }
-               $('.mask').show();
+               $('.mask_lbs').show();
+               $('.'+className).show();
                $("."+className).animateCss('fadeInDown');
                $(document).on("touchend","#"+className+"_close",function(){
                     $("."+className).animateCss('fadeOutUp',function(){
-                            $('.mask').hide();
+                            $('.mask_lbs').hide();
+                            $('.'+className).hide();
                     });
                     return false;
                });
                break;
             case "flipX": 
-                if($('.mask').find('className').length === 0){
-                    $('.mask').append(html);
+                if($('.mask_lbs').find('className').length === 0){
+                    $('.mask_lbs').append(html);
                 }
-                $('.mask').show();
+                $('.mask_lbs').show();
                 $("."+className).animateCss('flipInX');
                 $(document).on("touchend","#"+className+"_close",function(){
                         $("."+className).animateCss('flipOutX',function(){
-                                $('.mask').hide();
+                                $('.mask_lbs').hide();
                         });
                         return false;
                 });

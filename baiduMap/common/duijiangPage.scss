@@ -1,0 +1,64 @@
+@function torem($px){
+    @return $px / 40 * 1rem;
+}
+.duijiang_page {
+    background: #F1FFFF;
+    .top {
+        width: 100%;
+        height: torem(79);
+        background: #519DFF;
+        padding: 0 torem(20);
+        position: relative;
+        .goBack {
+            width: torem(24);
+            height: torem(42);
+            background: url("../images/btn-back.png") no-repeat;
+            background-size: 100% 100%;
+            margin-top: torem(23);
+            display: inline-block;
+        }
+        .title {
+            width: torem(120);
+            height: torem(35);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: torem(-44);
+            margin-top: torem(-17.5);
+            padding-left: torem(35);
+            i {
+                width: torem(35);
+                height: torem(35);   
+                background: url("../images/icon-gift.png") no-repeat;
+                background-size: 100% 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .text {
+                font-size: torem(35);
+                line-height: torem(35);
+                color: #ffffff;
+                letter-spacing: torem(4);
+                float: right;
+            }
+        }
+    }
+    .middle {
+        width: 100%;
+        height: auto;
+        .item {
+            width: 100%;
+            height: torem(610);
+            padding-top: torem(22);
+            position: relative;
+            .iron {
+                width: torem(567);
+                height: torem(588);
+                margin: 0 auto;
+                background: url("../images/kuang4.png") no-repeat;
+                background-size: 100% 100%; 
+            }
+        }
+    }
+}
