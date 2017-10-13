@@ -1,0 +1,401 @@
+// 2017/10/12
+*,
+::before,
+::after{
+    padding: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    color: #333;
+    font-family: "MicroSoft YaHei","sans-serif";
+}
+ul,ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+a:hover{
+    color: #333;
+}
+input,textarea{
+    border: none;
+    outline: none;
+    resize: none;
+    -webkit-appearance: none;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.clearfix::after,
+.clearfix::before{
+    content: ".";
+    line-height: 0;
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+// px to rem
+@function torem($px){
+    @return $px / 40 * 1rem;
+}
+
+// css for question and answer
+@mixin queAns-text {
+    color: #ffffff;
+    font-size: torem(20);
+    letter-spacing: torem(2);
+}
+
+// css for icon'width and icon'height
+@mixin icon_wh {
+    width: torem(40);
+    height: torem(40);
+}
+
+// css for desc'font
+@mixin desc_font {
+    font: {
+        size: torem(24);
+    }
+    color: #fff;
+    letter-spacing: torem(2);
+    text-align: left;
+}
+
+// css for content'css
+@mixin content_css {
+    @include desc_font;
+    display: inline-block;
+    vertical-align: top;
+    width: torem(370);
+    padding-left: torem(5);
+}
+
+.hide {
+    display: none;
+}
+
+.space {
+    width: 100%;
+    height: torem(24);
+}
+.UDcheckbox {
+    // $("#checkbox").is(':checked')
+    display: inline-block;
+    position: absolute;
+    left: -0.25rem;
+    .chk {
+        display: none;
+    }
+    .chk + label {
+        background-color: rgba(0, 0, 0, 0);
+        border: torem(1) solid rgba(254, 190, 14, 0.681);
+        box-shadow: 0 torem(1) torem(2) rgba(0, 0, 0, 0.05), inset 0px torem(-15) torem(10) torem(-12) rgba(0, 0, 0, 0.05);
+        padding: torem(9);
+        border-radius: torem(1);
+        display: inline-block;
+        position: relative;
+        top: 0.05rem;
+    }
+    .chk + label:active {
+        box-shadow: 0 torem(1) torem(2) rgba(0,0,0,0.05), inset torem(0) torem(1) torem(3) rgba(0,0,0,0.1);
+    }
+    .chk:checked + label {
+        background-color: rgba(0, 0, 0, 0);
+        border: torem(1) solid rgba(254, 190, 14, 0.681);
+        box-shadow: 0 torem(1) torem(2) rgba(0, 0, 0, 0.05), inset torem(0) torem(-15) torem(10) torem(-12) rgba(0, 0, 0, 0.05), inset torem(15) torem(10) torem(-12) rgba(255, 255, 255, 0.1);
+        color: #243441;
+    }
+    .chk:checked + label:after {
+        content: '\2714';
+        position: absolute;
+        top: -0.40rem;
+        left: 0.02rem;
+        color: #FEC10E;
+        width: 100%;
+        text-align: center;
+        font-size: 0.7rem;
+    }
+}
+
+$fontUrl: "../images/";
+$gameBg: $fontUrl + "gamePage.png";
+$goToQuePage: $fontUrl + "goTo.png";
+$txt_home: $fontUrl + "txt_home.png";
+$master: $fontUrl + "master.png";
+$singleDog: $fontUrl +　"singleDog.png";
+$questionFram: $fontUrl + "questionFrame.png";
+$custome: $fontUrl + "singleDog.png";
+$response: $fontUrl + "response.png";
+$submit: $fontUrl + "submit.png";
+$resultBg: $fontUrl + "resultBg.png";
+$photoFrame: $fontUrl + "photoFrame.png";
+$icon1: $fontUrl + "icon1.png";
+$icon2: $fontUrl + "icon2.png";
+$icon3: $fontUrl + "icon3.png";
+$headImg: $fontUrl + "headImg.png";
+$reStart: $fontUrl + "reStart.png";
+$biuldPoster: $fontUrl + "biuldPoster.png";
+
+// pages begine
+html,body {
+    width: 100%;
+    height: 100%;
+}
+.homePage {
+    width: 100%;
+    height: 100%;
+    background: url($gameBg) no-repeat;
+    background-size: 100% 100%; 
+    position: relative;
+    .txt_home {
+        width: torem(477);
+        height: torem(492);
+        background: url($txt_home) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: torem(-238.5); 
+        top: torem(160);
+    }
+    .goToQuePage {
+        width: torem(70);
+        height: torem(57);
+        background: url($goToQuePage) no-repeat;
+        background-size: 100% 100%;
+        position:  absolute;
+        left: 50%;
+        margin-left: torem(-35);
+        bottom: torem(352);
+    }
+}
+.quePage {
+    width: 100%;
+    height: 100%;
+    background: url($gameBg) no-repeat;
+    background-size: 100% 100%; 
+    .questions {
+        width: 100%;
+        height: auto;
+        padding-top: torem(75); 
+        .item {
+            width: 100%;
+            height: auto;
+            padding-bottom: torem(24); 
+            .item_top {
+                width: 100%;
+                height: auto;
+                .item_top_l {
+                    width: 16%;
+                    height: auto;
+                    display: inline-block;
+                    .master{
+                        width: torem(84);
+                        height: torem(84);
+                        background: url($master) no-repeat;
+                        background-size: 100% 100%;
+                    }
+                }
+                .item_top_r {
+                    width: 80%;
+                    height: auto;
+                    display: inline-block;
+                    vertical-align: top;
+                    .question {
+                        width: 100%;
+                        height: auto;
+                        padding-left: torem(20);
+                        .qustion_content {
+                            letter-spacing: torem(1);
+                        }
+                        .qustion_content1 {
+                            width: torem(391);
+                            height: torem(96);
+                            line-height: torem(96);
+                            background: url($questionFram) no-repeat;
+                            background-size: 100% 100%; 
+                            padding-left: torem(30);
+                            @include queAns-text;
+                        }
+                    }
+                    .answer {
+                        width: 100%;
+                        height: auto;
+                        padding-left: torem(20);
+                        .answer_table {
+                            width: torem(391);
+                            padding-left: torem(30);
+                            @include queAns-text;
+                            td {
+                                width: 50%;
+                                padding: torem(8) torem(20);
+                                position: relative;
+                                .checkbox {
+                                    width: torem(10);
+                                    height: torem(10);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .item_bottom {
+                width: 100%;
+                height: auto;
+                .item_bottom_l {
+                    width: 80%;
+                    height: auto;
+                    display: inline-block;
+                    .responses {
+                        @include queAns-text;
+                        display: inline-block;
+                        background: url($response) no-repeat;
+                        background-size: 100% 100%;
+                        height: torem(71);
+                        width: auto;
+                        line-height: torem(71);
+                        text-align: center; 
+                        padding: 0 torem(40) 0 torem(24);
+                    }
+                }
+                .item_bottom_r {
+                    width: 16%;
+                    height: auto;
+                    display: inline-block;
+                    vertical-align: top;
+                    .custome{
+                        width: torem(84);
+                        height: torem(84);
+                        background: url($custome) no-repeat;
+                        background-size: 100% 100%;
+                    }
+                }
+            }
+        }
+    }
+    .submit {
+        display: block;
+        width: torem(235);
+        height: torem(76);
+        background: url($submit) no-repeat;
+        background-size: 100% 100%; 
+        margin: torem(22) auto 0 auto;
+    }
+}
+.resultPage {
+    width: 100%;
+    height: 100%;
+    background: url($resultBg) no-repeat;
+    background-size: 100% 100%; 
+    .photoFrame {
+        width: torem(623);
+        height: 99%;
+        background: url($photoFrame) no-repeat;
+        background-size: 100% 100%; 
+        margin: 1% auto 0 auto;
+        overflow: hidden;
+        .desc {
+            width: torem(546);
+            height: auto;
+            margin: torem(110) auto 0 auto;
+            text-align: center;
+            .item {
+                margin-top: torem(10);
+            }
+            .item:nth-child(1){
+                .icon {
+                    @include icon_wh;
+                    background: url($icon1) no-repeat;
+                    background-size: 100% 100%; 
+                    display: inline-block;
+                }
+                .content {
+                    @include content_css;
+                }
+            }
+            .item:nth-child(2){
+                .icon {
+                    @include icon_wh;
+                    background: url($icon2) no-repeat;
+                    background-size: 100% 100%; 
+                    display: inline-block;
+                }
+                .content {
+                    @include content_css;
+                }
+            }
+            .item:nth-child(3){
+                .icon {
+                    @include icon_wh;
+                    background: url($icon3) no-repeat;
+                    background-size: 100% 100%; 
+                    display: inline-block;
+                }
+                .content {
+                    @include content_css;
+                }
+            }
+        }
+        .result {
+            width: torem(465);
+            height: auto;
+            margin: torem(66) auto;
+            .nikeName {
+                text-align: center;
+                color: #fff;
+                font-size: torem(21);   
+                letter-spacing: torem(2);
+            }
+            .headImg {
+                background: url($headImg) no-repeat;
+                background-size: 100% 100%;
+                width: torem(455);
+                height: torem(249); 
+                margin: torem(13) auto torem(0) auto;
+            }
+            .grade {
+                color: #FFE610;
+                font-size: torem(55);
+                font-weight: 600;
+                text-align: center;
+                letter-spacing: torem(4);
+            }
+            .explain {
+                color: #fff;
+                font-size: torem(28);
+                text-align: center;
+                margin-top: torem(40);
+            }   
+        }
+        .footer {
+            width: torem(457);
+            height: torem(78);
+            margin: 0 auto;
+            .reStart {
+                width: torem(208);
+                height: torem(78);
+                background: url($reStart) no-repeat;
+                background-size: 100% 100%; 
+                display: inline-block;
+            }
+            .biultPoster {
+                width: torem(235);
+                height: torem(76);
+                background: url($biuldPoster) no-repeat;
+                background-size: 100% 100%; 
+                display: inline-block;
+            }
+        }
+    }
+}
+// pages end

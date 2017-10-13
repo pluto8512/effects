@@ -1,0 +1,379 @@
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  font-family: "MicroSoft YaHei","sans-serif";
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  color: #333;
+}
+
+input, textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  -webkit-appearance: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::after,
+.clearfix::before {
+  content: ".";
+  line-height: 0;
+  height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+.hide {
+  display: none;
+}
+
+.space {
+  width: 100%;
+  height: 0.6rem;
+}
+
+.UDcheckbox {
+  display: inline-block;
+  position: absolute;
+  left: -0.25rem;
+}
+.UDcheckbox .chk {
+  display: none;
+}
+.UDcheckbox .chk + label {
+  background-color: transparent;
+  border: 0.025rem solid rgba(254, 190, 14, 0.681);
+  box-shadow: 0 0.025rem 0.05rem rgba(0, 0, 0, 0.05), inset 0px -0.375rem 0.25rem -0.3rem rgba(0, 0, 0, 0.05);
+  padding: 0.225rem;
+  border-radius: 0.025rem;
+  display: inline-block;
+  position: relative;
+  top: 0.05rem;
+}
+.UDcheckbox .chk + label:active {
+  box-shadow: 0 0.025rem 0.05rem rgba(0, 0, 0, 0.05), inset 0rem 0.025rem 0.075rem rgba(0, 0, 0, 0.1);
+}
+.UDcheckbox .chk:checked + label {
+  background-color: transparent;
+  border: 0.025rem solid rgba(254, 190, 14, 0.681);
+  box-shadow: 0 0.025rem 0.05rem rgba(0, 0, 0, 0.05), inset 0rem -0.375rem 0.25rem -0.3rem rgba(0, 0, 0, 0.05), inset 0.375rem 0.25rem -0.3rem rgba(255, 255, 255, 0.1);
+  color: #243441;
+}
+.UDcheckbox .chk:checked + label:after {
+  content: '\2714';
+  position: absolute;
+  top: -0.40rem;
+  left: 0.02rem;
+  color: #FEC10E;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.homePage {
+  width: 100%;
+  height: 100%;
+  background: url("../images/gamePage.png") no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+.homePage .txt_home {
+  width: 11.925rem;
+  height: 12.3rem;
+  background: url("../images/txt_home.png") no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  left: 50%;
+  margin-left: -5.9625rem;
+  top: 4rem;
+}
+.homePage .goToQuePage {
+  width: 1.75rem;
+  height: 1.425rem;
+  background: url("../images/goTo.png") no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  left: 50%;
+  margin-left: -0.875rem;
+  bottom: 8.8rem;
+}
+
+.quePage {
+  width: 100%;
+  height: 100%;
+  background: url("../images/gamePage.png") no-repeat;
+  background-size: 100% 100%;
+}
+.quePage .questions {
+  width: 100%;
+  height: auto;
+  padding-top: 1.875rem;
+}
+.quePage .questions .item {
+  width: 100%;
+  height: auto;
+  padding-bottom: 0.6rem;
+}
+.quePage .questions .item .item_top {
+  width: 100%;
+  height: auto;
+}
+.quePage .questions .item .item_top .item_top_l {
+  width: 16%;
+  height: auto;
+  display: inline-block;
+}
+.quePage .questions .item .item_top .item_top_l .master {
+  width: 2.1rem;
+  height: 2.1rem;
+  background: url("../images/master.png") no-repeat;
+  background-size: 100% 100%;
+}
+.quePage .questions .item .item_top .item_top_r {
+  width: 80%;
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+.quePage .questions .item .item_top .item_top_r .question {
+  width: 100%;
+  height: auto;
+  padding-left: 0.5rem;
+}
+.quePage .questions .item .item_top .item_top_r .question .qustion_content {
+  letter-spacing: 0.025rem;
+}
+.quePage .questions .item .item_top .item_top_r .question .qustion_content1 {
+  width: 9.775rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  background: url("../images/questionFrame.png") no-repeat;
+  background-size: 100% 100%;
+  padding-left: 0.75rem;
+  color: #ffffff;
+  font-size: 0.5rem;
+  letter-spacing: 0.05rem;
+}
+.quePage .questions .item .item_top .item_top_r .answer {
+  width: 100%;
+  height: auto;
+  padding-left: 0.5rem;
+}
+.quePage .questions .item .item_top .item_top_r .answer .answer_table {
+  width: 9.775rem;
+  padding-left: 0.75rem;
+  color: #ffffff;
+  font-size: 0.5rem;
+  letter-spacing: 0.05rem;
+}
+.quePage .questions .item .item_top .item_top_r .answer .answer_table td {
+  width: 50%;
+  padding: 0.2rem 0.5rem;
+  position: relative;
+}
+.quePage .questions .item .item_top .item_top_r .answer .answer_table td .checkbox {
+  width: 0.25rem;
+  height: 0.25rem;
+}
+.quePage .questions .item .item_bottom {
+  width: 100%;
+  height: auto;
+}
+.quePage .questions .item .item_bottom .item_bottom_l {
+  width: 80%;
+  height: auto;
+  display: inline-block;
+}
+.quePage .questions .item .item_bottom .item_bottom_l .responses {
+  color: #ffffff;
+  font-size: 0.5rem;
+  letter-spacing: 0.05rem;
+  display: inline-block;
+  background: url("../images/response.png") no-repeat;
+  background-size: 100% 100%;
+  height: 1.775rem;
+  width: auto;
+  line-height: 1.775rem;
+  text-align: center;
+  padding: 0 1rem 0 0.6rem;
+}
+.quePage .questions .item .item_bottom .item_bottom_r {
+  width: 16%;
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+.quePage .questions .item .item_bottom .item_bottom_r .custome {
+  width: 2.1rem;
+  height: 2.1rem;
+  background: url("../images/singleDog.png") no-repeat;
+  background-size: 100% 100%;
+}
+.quePage .submit {
+  display: block;
+  width: 5.875rem;
+  height: 1.9rem;
+  background: url("../images/submit.png") no-repeat;
+  background-size: 100% 100%;
+  margin: 0.55rem auto 0 auto;
+}
+
+.resultPage {
+  width: 100%;
+  height: 100%;
+  background: url("../images/resultBg.png") no-repeat;
+  background-size: 100% 100%;
+}
+.resultPage .photoFrame {
+  width: 15.575rem;
+  height: 99%;
+  background: url("../images/photoFrame.png") no-repeat;
+  background-size: 100% 100%;
+  margin: 1% auto 0 auto;
+  overflow: hidden;
+}
+.resultPage .photoFrame .desc {
+  width: 13.65rem;
+  height: auto;
+  margin: 2.75rem auto 0 auto;
+  text-align: center;
+}
+.resultPage .photoFrame .desc .item {
+  margin-top: 0.25rem;
+}
+.resultPage .photoFrame .desc .item:nth-child(1) .icon {
+  width: 1rem;
+  height: 1rem;
+  background: url("../images/icon1.png") no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+}
+.resultPage .photoFrame .desc .item:nth-child(1) .content {
+  font-size: 0.6rem;
+  color: #fff;
+  letter-spacing: 0.05rem;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  width: 9.25rem;
+  padding-left: 0.125rem;
+}
+.resultPage .photoFrame .desc .item:nth-child(2) .icon {
+  width: 1rem;
+  height: 1rem;
+  background: url("../images/icon2.png") no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+}
+.resultPage .photoFrame .desc .item:nth-child(2) .content {
+  font-size: 0.6rem;
+  color: #fff;
+  letter-spacing: 0.05rem;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  width: 9.25rem;
+  padding-left: 0.125rem;
+}
+.resultPage .photoFrame .desc .item:nth-child(3) .icon {
+  width: 1rem;
+  height: 1rem;
+  background: url("../images/icon3.png") no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+}
+.resultPage .photoFrame .desc .item:nth-child(3) .content {
+  font-size: 0.6rem;
+  color: #fff;
+  letter-spacing: 0.05rem;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  width: 9.25rem;
+  padding-left: 0.125rem;
+}
+.resultPage .photoFrame .result {
+  width: 11.625rem;
+  height: auto;
+  margin: 1.65rem auto;
+}
+.resultPage .photoFrame .result .nikeName {
+  text-align: center;
+  color: #fff;
+  font-size: 0.525rem;
+  letter-spacing: 0.05rem;
+}
+.resultPage .photoFrame .result .headImg {
+  background: url("../images/headImg.png") no-repeat;
+  background-size: 100% 100%;
+  width: 11.375rem;
+  height: 6.225rem;
+  margin: 0.325rem auto 0rem auto;
+}
+.resultPage .photoFrame .result .grade {
+  color: #FFE610;
+  font-size: 1.375rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+.resultPage .photoFrame .result .explain {
+  color: #fff;
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+.resultPage .photoFrame .footer {
+  width: 11.425rem;
+  height: 1.95rem;
+  margin: 0 auto;
+}
+.resultPage .photoFrame .footer .reStart {
+  width: 5.2rem;
+  height: 1.95rem;
+  background: url("../images/reStart.png") no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+}
+.resultPage .photoFrame .footer .biultPoster {
+  width: 5.875rem;
+  height: 1.9rem;
+  background: url("../images/biuldPoster.png") no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+}
+
+/*# sourceMappingURL=singleDog.css.map */
