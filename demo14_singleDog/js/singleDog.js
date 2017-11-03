@@ -53,6 +53,10 @@ $(function($) {
                     page_control.clear();
                     $(".resultPage").show();
                     break;
+                case "posterPage": 
+                    page_control.clear();
+                    $(".posterPage").show();
+                    break;
                 default:
                     break;
             }
@@ -84,9 +88,15 @@ $(function($) {
                         // TODO
                         // 评分逻辑...getResult();
                         page_control.show("resultPage");
-                        verticalAlign(".resultPage .item:nth-child(1)");
+                        verticalAlign(".resultPage .item:nth-child(1)");// 垂直居中
                         verticalAlign(".resultPage .item:nth-child(2)");
                         verticalAlign(".resultPage .item:nth-child(3)");
+                        return false;
+                    });
+                    break;
+                case "biultPoster":
+                    $(".biultPoster").on("touchend",function () {
+                        page_control.show("posterPage");
                         return false;
                     });
                     break;
@@ -116,6 +126,7 @@ $(function($) {
         page_control.show("homePage");
         btn_control.action("goToQuePage");
         btn_control.action("submit");
+        btn_control.action("biultPoster");
     } 
 
     /**
@@ -123,6 +134,13 @@ $(function($) {
      */
     function getResult() {
 
+    }
+
+    /**
+     * 海报逻辑
+     */
+    function poster() {
+        
     }
 
     //==========
